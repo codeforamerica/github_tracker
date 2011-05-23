@@ -1,0 +1,20 @@
+defaults: &defaults
+  host: localhost
+  # slaves:
+  #   - host: slave1.local
+  #     port: 27018
+  #   - host: slave2.local
+  #     port: 27019
+
+development:
+  <<: *defaults
+  database: shortstack_development
+
+test:
+  <<: *defaults
+  database: shortstack_test
+
+# set these environment variables on your prod server
+production:
+
+  uri: <%= ENV['MONGOHQ_URL'] %>
