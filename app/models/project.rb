@@ -2,16 +2,16 @@ class Project
   include Mongoid::Document
   field :homepage 
   field :has_downloads
-  field :forks
+  field :forks, type: Integer
   field :url 
-  field :watchers
+  field :watchers, type: Integer
   field :has_wiki
-  field :fork
-  field :open_issues
+  field :fork, type: Boolean
+  field :open_issues, type: Integer
   field :created_at, type: DateTime
   field :organization
   field :description
-  field :size
+  field :size, type: Integer
   field :private
   field :has_issues
   field :name
@@ -22,15 +22,16 @@ class Project
   index :org_id
   index :organization
   index :fork
+  index :forks  
   index :open_issues
   index :created_at
   index :size
   index :watchers
   
   validates_uniqueness_of :name
-  referenced_in :coder
-  referenced_in :org    
-  references_many :commits 
+  has_many :commits 
+  belongs_to :org    
+
   
   # given a github url, goto github and grab the project data
   #
@@ -42,10 +43,12 @@ class Project
     repo_name = parse_repo(repo_url)
     if repo_name[0] 
       begin
-        repo = Octokit.repo(repo_name)
+        repo = Octokit.repo(repo_name.join)
       rescue
         return false, "We had a problem finding that repository"
       else
+        org =  Org.new.find_or_create(repo.organization)
+        repo["org_id"] = org.id
         return Project.create!(repo)
       end
     else
@@ -65,7 +68,7 @@ class Project
     rescue 
       return false, "We had trouble parsing that url"
     else
-      repo_name = domain.path.split("/")[1] + "/" + domain.path.split("/")[2]
+      repo_name = [domain.path.split("/")[1], "/", domain.path.split("/")[2]]
     end
   end
 
@@ -76,12 +79,11 @@ class Project
   # @example Project.first.get_commits(1)
   def get_commits(page, branch = "master")
     repo_name = parse_repo(self.url)
-    Octokit.commits(repo_name, "master", {:page => page})
     begin
-      c = Octokit.commits(repo_name, "master", {:page => page})
+      c = Octokit.commits(repo_name.join, "master", {:page => page})
       c.each do |commit|
         coder = Coder.new.find_or_create(commit.author.login)
-        options = {:sha => commit.id, :project_id => self.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date}
+        options = {:sha => commit.id, :project_id => self.id, :org_id => self.org.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date}
         Commit.new.find_or_create(options)    
       end      
     rescue 
@@ -103,6 +105,12 @@ class Project
     end
     
   end
-
+  
+  # mongo's not so great about has many through, so we'll have to pull them manually
+  def coders
+    coders = []
+    self.commits.distinct(:coder_id).each {|x| coders << Coder.where(:_id => x).first }
+    coders
+  end
   
 end

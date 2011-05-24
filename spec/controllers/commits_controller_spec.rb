@@ -3,10 +3,6 @@ require 'spec_helper'
 describe CommitsController do
 
   describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
-    end
     
    pending "should grab commits for a project"
    

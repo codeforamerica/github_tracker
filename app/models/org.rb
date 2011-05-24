@@ -1,7 +1,7 @@
 class Org
   include Mongoid::Document
-  references_many :projects
-  references_many :coders    
+  has_many :projects   
+  has_many :commits      
 
   field :id
   field :gravatar_id
@@ -9,12 +9,12 @@ class Org
   field :name
   field :created_at, type: DateTime
   field :location
-  field :public_repo_count
-  field :public_gist_count
+  field :public_repo_count, type: Integer
+  field :public_gist_count, type: Integer
   field :blog
-  field :following_count
+  field :following_count, type: Integer
   field :type
-  field :followers_count
+  field :followers_count, type: Integer
   field :login 
   field :email
   
@@ -60,6 +60,24 @@ class Org
       end
       self.projects
     end
+  end
+  
+  # given a org name, find and return it or goto github and grab the org details and return a new coder
+  #
+  # @param name The username of the coder i.e. sferik
+  # @return Github user object or error
+  # @example Org.new.find_or_create("codeforamerica")
+  
+  def find_or_create(name)
+    org = Org.where(:login => name).first
+    !org.blank? ? org : self.get_details(name)
+  end
+
+  # mongo's not so great about has many through, so we'll have to pull them manually  
+  def coders
+    coders = []
+    self.commits.distinct(:coder_id).each {|x| coders << Coder.where(:_id => x).first }
+    coders
   end
 
 end

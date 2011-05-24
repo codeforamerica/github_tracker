@@ -1,31 +1,29 @@
 class Coder 
   include Mongoid::Document
-  references_many :projects 
-  referenced_in :organization 
-    
-  field :id 
-  field :organization_id 
+  has_many :commits
+
+  field :org_id 
   field :gravatar_id 
   field :company
   field :name
-  field :created_at
+  field :created_at, type: DateTime
   field :location
-  field :public_repo_count
-  field :public_gist_count
+  field :public_repo_count, type: Integer
+  field :public_gist_count, type: Integer
   field :blog
-  field :following_count
+  field :following_count, type: Integer
   field :type
-  field :followers_count
+  field :followers_count, type: Integer
   field :login
   field :email
   
-  index :id
-  index :organizaation_id
+  index :org_id
   index :login
   index :following_count
   index :followers_count
   index :public_repo_count  
-
+  index :public_gist_count    
+  index :created_at
   
   validates_uniqueness_of :login
   
@@ -55,6 +53,13 @@ class Coder
   def find_or_create(name)
     coder = Coder.where(:login => name).first
     !coder.blank? ? coder : self.get_details(name)
+  end
+  
+  # mongo's not so great about has many through, so we'll have to pull them manually
+  def projects
+    projects = []
+    self.commits.distinct(:project_id).each {|x| projects << Project.where(:_id => x).first }
+    projects
   end
 
 end

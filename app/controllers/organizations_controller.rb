@@ -15,15 +15,14 @@ class OrganizationsController < ApplicationController
   # @example Organization.new.get_details("codeforamerica")
 
   def index
+      conditions(Org)
     
-    conditions(Org)
+      @org = Org.where(@conditions).paginate(
+        :per_page => 25, :page => params[:page])
     
-    @org = Org.where(@conditions).paginate(
-      :per_page => 25, :page => params[:page])
-    
-    respond_to do |format|
-      format.json { render :json => @org.to_json}      
-    end
+      respond_to do |format|
+        format.json { render :json => @org.to_json}      
+      end
   end
 
 end

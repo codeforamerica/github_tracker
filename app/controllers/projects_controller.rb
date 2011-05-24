@@ -1,18 +1,22 @@
 class ProjectsController < ApplicationController
 
-  # returns organizations in json based upon certain paramters
+  # returns projects in json based upon certain paramters
   #
-  # @path /organizations.json
-  # @path /:org_login.json  
-  # @param org_login
+  # @path /projects.json
+  # @path /:organization/projects.json  
+  # @path /:organization/:name.json    
+  # @param :organization
   # @param created_at>
   # @param created_at<
-  # @param followers_count<      
-  # @param followers_count>
-  # @param following_count<      
-  # @param following_count>          
-  # @return Organization or Organizations
-  # @example Organization.new.get_details("codeforamerica")
+  # @param watchers<      
+  # @param watchers>
+  # @param open_issues<      
+  # @param open_issues>          
+  # @param size<      
+  # @param size>  
+  # @param fork [true,false]    
+  # @return Project or Projects
+  # @example /codeforamerica/shortstack.json
 
   def index
   

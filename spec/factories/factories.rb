@@ -18,16 +18,12 @@ Factory.define :coder do |f|
   f.created_at Time.now
   f.location "San Francisco"
   f.public_repo_count 19
-  f.public_gist_count 0
+  f.public_gist_count 10
   f.following_count 25
   f.followers_count 35
   f.sequence(:login) { |n| "something#{n}" }
   f.sequence(:email) { |n| "test#{n}@example.com" }
 
-end
-
-Factory.define :coder_in_org, :parent => :org do |f|
-  f.org {Factory(:org)}
 end
 
 Factory.sequence :name do |n|

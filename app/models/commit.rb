@@ -1,17 +1,16 @@
 class Commit 
   include Mongoid::Document
-  referenced_in :project
-  referenced_in :coder  
+  belongs_to :project
+  belongs_to :coder
+  belongs_to :org  
   
-  field :id
   field :project_id
   field :coder_id
   field :sha
   field :branch
   field :message
-  field :committed_date
+  field :committed_date, type: DateTime
   
-  index :id
   index :sha
   index :project_id
   index :coder_id

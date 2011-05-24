@@ -15,12 +15,15 @@ describe Project do
     stub_request(:get, "https://github.com/api/v2/json/commits/list/codeforamerica/shortstack/master?page=1").
              with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
              to_return(:status => 200, :body => fixture("project_commits.json"), :headers => {})
+     stub_request(:get, "https://github.com/api/v2/json/organizations/codeforamerica").
+              with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+              to_return(:status => 200, :body => fixture("organization.json"), :headers => {})
                          
     end
 
   it "should parse a correct repo url" do
     repo_name = Project.new.parse_repo("https://github.com/codeforamerica/fcc_reboot")
-    repo_name.should == "codeforamerica/fcc_reboot"
+    repo_name.should == ["codeforamerica","/","fcc_reboot"]
   end
 
   it "should return an error on an incorrect repo url" do
@@ -55,6 +58,7 @@ describe Project do
   end
   
   after do
+    Org.delete_all
     Project.delete_all
     Commit.delete_all
   end
