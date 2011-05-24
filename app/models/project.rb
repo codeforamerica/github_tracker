@@ -1,5 +1,32 @@
 class Project 
   include Mongoid::Document
+  field :homepage 
+  field :has_downloads
+  field :forks
+  field :url 
+  field :watchers
+  field :has_wiki
+  field :fork
+  field :open_issues
+  field :created_at, type: DateTime
+  field :organization
+  field :description
+  field :size
+  field :private
+  field :has_issues
+  field :name
+  field :owner
+  field :org_id
+
+  index :name, :uniq => true  
+  index :org_id
+  index :organization
+  index :fork
+  index :open_issues
+  index :created_at
+  index :size
+  index :watchers
+  
   validates_uniqueness_of :name
   referenced_in :coder
   referenced_in :org    

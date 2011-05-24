@@ -1,7 +1,32 @@
 class Coder 
   include Mongoid::Document
   references_many :projects 
-  referenced_in :organization   
+  referenced_in :organization 
+    
+  field :id 
+  field :organization_id 
+  field :gravatar_id 
+  field :company
+  field :name
+  field :created_at
+  field :location
+  field :public_repo_count
+  field :public_gist_count
+  field :blog
+  field :following_count
+  field :type
+  field :followers_count
+  field :login
+  field :email
+  
+  index :id
+  index :organizaation_id
+  index :login
+  index :following_count
+  index :followers_count
+  index :public_repo_count  
+
+  
   validates_uniqueness_of :login
   
 

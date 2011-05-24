@@ -141,7 +141,7 @@ DEPENDENCIES
   bson_ext
   delayed_job
   domainatrix
-  factory_girl_rails (= 1.1.beta1)
+  factory_girl_rails
   jquery-rails
   json
   mocha
@@ -153,4 +153,5 @@ DEPENDENCIES
   spork (~> 0.9.0.rc)
   sqlite3
   webmock
+  will_paginate
   yard

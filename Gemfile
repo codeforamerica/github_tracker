@@ -9,9 +9,10 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'octokit'
 gem 'domainatrix'
+gem 'will_paginate'
 
 group :test do
-  gem 'factory_girl_rails', '1.1.beta1'
+  gem 'factory_girl_rails'
   gem 'mocha'
   gem 'rspec-rails'
   gem 'ZenTest'

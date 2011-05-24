@@ -16,25 +16,25 @@ describe Org do
     end
 
   it "should save an organization" do
-    Org.delete_all
     org = Org.new.get_details("codeforamerica")
     org.name = "Code for America"
     Org.count.should == 1
   end
     
   it "should return error when organization not found" do
-    Org.delete_all    
     org = Org.new.get_details("codeforamerica1")
     org.should == [false, "We had a problem finding that organization"]
   end
   
   it "should grab a list of projects and add them" do
-    Org.delete_all
     org = Org.new.get_details("codeforamerica")
     org.get_projects
     org.projects.size.should == 1
     org.projects.first.name.should == "shortstack"
   end
 
+  after do
+    Org.delete_all
+  end
   
 end
