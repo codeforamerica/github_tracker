@@ -51,15 +51,31 @@ class Project
     repo_name = parse_repo(self.url)
     Octokit.commits(repo_name, "master", {:page => page})
     begin
-      commits = Octokit.commits(repo_name, "master", {:page => page})
+      c = Octokit.commits(repo_name, "master", {:page => page})
+      c.each do |commit|
+        coder = Coder.new.find_or_create(commit.author.login)
+        options = {:sha => commit.id, :project_id => self.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date}
+        Commit.new.find_or_create(options)    
+      end      
     rescue 
       return false, "No commits here!"
-    else
-      commits.each do |commit|
-        coder = Coder.new.find_or_create(commit.author.login)    
-        self.commits.create(:sha => commit.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date)
-      end
     end
   end
+  
+  # uses Delayed Job to scan through pages looking for commits
+  #
+  # @param page and the branch
+  # @return last commit or Error
+  # @example Project.first.get_commits(1)
+  def get_commit_history(page=1)
+    current_commits_size = self.commits.size
+    c = self.get_commits(page)
+    if c[0] == false
+    else
+      self.delay.get_commit_history(page+1)
+    end
+    
+  end
+
   
 end

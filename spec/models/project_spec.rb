@@ -45,10 +45,22 @@ describe Project do
   end
   
   it "should get commits" do
+    Project.delete_all
+    Commit.delete_all    
     repo = Project.new.get_details("https://github.com/codeforamerica/shortstack")
     repo.get_commits(1)
     repo.commits.size.should == 2
     repo.commits.first.coder.login.should == "sferik"
+  end
+  
+  it "should not add to commits already in the db" do
+    Project.delete_all
+    Commit.delete_all
+    Project.new.get_details("https://github.com/codeforamerica/shortstack")
+    repo = Project.last
+    2.times {repo.get_commit_history(1)}
+    puts repo.commits.inspect
+    repo.commits.size.should == 2
   end
   
 end
