@@ -11,10 +11,10 @@ describe Coder do
              to_return(:status => 404, :body => fixture("user_not_found.json"), :headers => {})             
     end
 
-  it "should save an organization" do
+  it "should save a coder" do
     Coder.delete_all
     coder = Coder.new.get_details("sferik")
-    coder.login = "sferik"
+    coder.login.should == "sferik"
     Coder.count.should == 1
   end
   
@@ -22,6 +22,14 @@ describe Coder do
     Coder.delete_all    
     coder = Coder.new.get_details("sferik1")
     coder.should == [false, "We had a problem finding that user"]
+  end
+  
+  it "should find a coder" do
+    Coder.delete_all
+    coder = Coder.new.find_or_create("sferik")
+    coder.login == "sferik"
+    Coder.count.should == 1
+    Coder.new.find_or_create("sferik").login.should == "sferik"
   end
   
 end

@@ -32,8 +32,8 @@ describe Org do
     Org.delete_all
     org = Org.new.get_details("codeforamerica")
     org.get_projects
-    org.projects.size.should == 66
-    org.projects.first.name.should == "cfahelloworld"
+    org.projects.size.should == 1
+    org.projects.first.name.should == "shortstack"
   end
 
   

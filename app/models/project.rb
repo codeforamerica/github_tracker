@@ -19,7 +19,7 @@ class Project
       rescue
         return false, "We had a problem finding that repository"
       else
-        Project.create!(repo)
+        return Project.create!(repo)
       end
     else
       return false, repo_name
@@ -39,6 +39,26 @@ class Project
       return false, "We had trouble parsing that url"
     else
       repo_name = domain.path.split("/")[1] + "/" + domain.path.split("/")[2]
+    end
+  end
+
+  # grab the commits for a repository
+  #
+  # @param page and the branch
+  # @return last commit or Error
+  # @example Project.first.get_commits(1)
+  def get_commits(page, branch = "master")
+    repo_name = parse_repo(self.url)
+    Octokit.commits(repo_name, "master", {:page => page})
+    begin
+      commits = Octokit.commits(repo_name, "master", {:page => page})
+    rescue 
+      return false, "No commits here!"
+    else
+      commits.each do |commit|
+        coder = Coder.new.find_or_create(commit.author.login)    
+        self.commits.create(:sha => commit.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date)
+      end
     end
   end
   

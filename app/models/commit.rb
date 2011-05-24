@@ -1,5 +1,8 @@
 class Commit 
   include Mongoid::Document
-  embedded_in :project, :inverse_of => :commits 
-  referenced_in :project  
+  referenced_in :project
+  referenced_in :coder  
+  
+  validates_uniqueness_of :sha
+    
 end
