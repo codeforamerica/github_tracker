@@ -12,28 +12,27 @@ describe Project do
     end
 
   it "should parse a correct repo url" do
+    Project.delete_all
     repo_name = Project.new.parse_repo("https://github.com/codeforamerica/fcc_reboot")
     repo_name.should == "codeforamerica/fcc_reboot"
   end
   
   it "should return an error on an incorrect repo url" do
+    Project.delete_all
     repo_name = Project.new.parse_repo("https://githubcom/codeforamerica/fcc_reboot")
     repo_name[0].should be false
     repo_name[1].should == "We had trouble parsing that url"
   end
   
   it "should save a repo" do
+    Project.delete_all
     repo_name = Project.new.get_details("https://github.com/codeforamerica/shortstack")
     repo_name.name.should == "shortstack"
     Project.count.should == 1
   end
   
-  it "should not save a repo if it already exists" do
-    2.times { repo_name = Project.new.get_details("https://github.com/codeforamerica/shortstack")}
-    Project.count.should == 1
-  end
-  
   it "should return error when repo not found" do
+    Project.delete_all
     repo = Project.new.get_details("https://github.com/codeforamerica/shortstack1")
     repo.should == [false, "We had a problem finding that repository"]
   end

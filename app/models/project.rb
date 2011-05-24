@@ -1,12 +1,15 @@
 class Project 
   include Mongoid::Document
   validates_uniqueness_of :name
+  referenced_in :coder
+  referenced_in :org    
+  references_many :commits 
   
   # given a github url, goto github and grab the project data
   #
   # @param repo_url The url of the repo, i.e. "https://githubcom/codeforamerica/fcc_reboot"
   # @return Project or Error
-  # @example Project.new.get_project("https://github.com/codeforamerica/shortstack")
+  # @example Project.new.get_details("https://github.com/codeforamerica/shortstack")
   
   def get_details(repo_url)  
     repo_name = parse_repo(repo_url)
@@ -16,7 +19,7 @@ class Project
       rescue
         return false, "We had a problem finding that repository"
       else
-        Project.create(repo)
+        Project.create!(repo)
       end
     else
       return false, repo_name

@@ -12,17 +12,14 @@ describe Coder do
     end
 
   it "should save an organization" do
+    Coder.delete_all
     coder = Coder.new.get_details("sferik")
     coder.login = "sferik"
     Coder.count.should == 1
   end
   
-  it "should not save a coder if they already exists" do
-    2.times { coder = Coder.new.get_details("sferik")}
-    Coder.count.should == 1
-  end
-  
   it "should return error when user not found" do
+    Coder.delete_all    
     coder = Coder.new.get_details("sferik1")
     coder.should == [false, "We had a problem finding that user"]
   end
