@@ -41,3 +41,17 @@ Factory.define :project do |f|
   f.organization {Factory.next(:login)}
   f.org {Factory(:org)}
 end
+
+Factory.sequence :sha do |n|
+  "sha#{n}" 
+end
+
+Factory.define :commit do |f|
+  f.project {Factory(:project)}
+  f.coder {Factory(:coder)}
+  f.org {Factory(:org)}
+  f.sha {Factory.next(:sha)}
+  f.branch "master"
+  f.message "something funny"
+  f.committed_date Time.now
+end

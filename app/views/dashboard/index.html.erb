@@ -1,0 +1,25 @@
+<% content_for :header do %>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+        google.load('visualization', '1', {'packages':['motionchart']});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Coder');
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Commits');          
+          data.addRows(  
+            [
+            ['sferik',new Date (1988,0,1),1000],
+            ['mevans',new Date (1988,0,1),1150],
+            ['sferik',new Date (1989,6,1),1200],
+            ['mevans',new Date (1989,6,1),788]
+            ]
+            );
+          var chart = new google.visualization.MotionChart(document.getElementById('chart_div'));
+          chart.draw(data, {width: 600, height:300});
+        }
+      </script>
+<% end %>
+
+<div id="chart_div" style="width: 600px; height: 300px;"></div>

@@ -112,5 +112,6 @@ class Project
     self.commits.distinct(:coder_id).each {|x| coders << Coder.where(:_id => x).first }
     coders
   end
+
   
 end

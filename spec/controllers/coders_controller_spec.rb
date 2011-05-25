@@ -113,9 +113,33 @@ describe CodersController do
     end
         
     after do
+      Commit.delete_all
+      Project.delete_all
       Coder.delete_all
       Org.delete_all
     end
     
   end
+  
+  describe "GET 'index'" do
+    before do
+      Coder.delete_all
+      2.times {Factory(:coder)}
+    end
+    
+    it "should return a coder's projects" do
+      commit = Factory(:commit)      
+      get "projects", :login => commit.coder.login, :format => :json
+      response.should be_success
+      ActiveSupport::JSON.decode(response.body).should == ActiveSupport::JSON.decode([commit.coder, :projects => [commit.coder.projects]].to_json)
+    end
+
+    after do
+      Commit.delete_all
+      Project.delete_all
+      Coder.delete_all
+      Org.delete_all
+    end
+  end
+  
 end

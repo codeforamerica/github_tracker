@@ -24,10 +24,9 @@ class Coder
   index :public_repo_count  
   index :public_gist_count    
   index :created_at
-  
+    
   validates_uniqueness_of :login
   
-
   # given a coder name, goto github and grab the user details and create a new coder
   #
   # @param name The username of the coder i.e. sferik
@@ -61,5 +60,7 @@ class Coder
     self.commits.distinct(:project_id).each {|x| projects << Project.where(:_id => x).first }
     projects
   end
+  
+
 
 end

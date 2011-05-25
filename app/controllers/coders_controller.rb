@@ -40,5 +40,13 @@ class CodersController < ApplicationController
       format.json { render :json => [@items, @coder].to_json}      
     end
   end
+  
+  def projects
+    @coder = Coder.where(:login => params[:login]).first
+    
+    respond_to do |format|
+      format.json { render :json => [@coder, :projects => [@coder.projects]].to_json}      
+    end  
+  end
     
 end
