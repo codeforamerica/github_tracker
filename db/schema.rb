@@ -10,7 +10,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110524013435) do
+ActiveRecord::Schema.define(:version => 20110525012644) do
+
+  create_table "coders", :force => true do |t|
+    t.integer  "org_id"
+    t.string   "gravatar_id"
+    t.string   "company"
+    t.string   "name"
+    t.datetime "created_at"
+    t.string   "location"
+    t.integer  "public_repo_count"
+    t.integer  "public_gist_count"
+    t.string   "blog"
+    t.integer  "following_count"
+    t.string   "type"
+    t.integer  "followers_count"
+    t.string   "login"
+    t.string   "email"
+  end
+
+  add_index "coders", ["created_at"], :name => "index_coders_on_created_at"
+  add_index "coders", ["followers_count"], :name => "index_coders_on_followers_count"
+  add_index "coders", ["following_count"], :name => "index_coders_on_following_count"
+  add_index "coders", ["login"], :name => "index_coders_on_login"
+  add_index "coders", ["org_id"], :name => "index_coders_on_org_id"
+  add_index "coders", ["public_gist_count"], :name => "index_coders_on_public_gist_count"
+  add_index "coders", ["public_repo_count"], :name => "index_coders_on_public_repo_count"
+
+  create_table "commits", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "coder_id"
+    t.integer  "org_id"
+    t.string   "sha"
+    t.string   "branch"
+    t.string   "message"
+    t.datetime "committed_date"
+  end
+
+  add_index "commits", ["coder_id"], :name => "index_commits_on_coder_id"
+  add_index "commits", ["committed_date"], :name => "index_commits_on_committed_date"
+  add_index "commits", ["org_id"], :name => "index_commits_on_org_id"
+  add_index "commits", ["project_id"], :name => "index_commits_on_project_id"
+  add_index "commits", ["sha"], :name => "index_commits_on_sha"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -26,5 +67,58 @@ ActiveRecord::Schema.define(:version => 20110524013435) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "orgs", :force => true do |t|
+    t.string   "gravatar_id"
+    t.string   "company"
+    t.string   "name"
+    t.datetime "created_at"
+    t.string   "location"
+    t.integer  "public_repo_count"
+    t.integer  "public_gist_count"
+    t.string   "blog"
+    t.integer  "following_count"
+    t.string   "type"
+    t.integer  "followers_count"
+    t.string   "login"
+    t.string   "email"
+  end
+
+  add_index "orgs", ["created_at"], :name => "index_orgs_on_created_at"
+  add_index "orgs", ["email"], :name => "index_orgs_on_email"
+  add_index "orgs", ["followers_count"], :name => "index_orgs_on_followers_count"
+  add_index "orgs", ["following_count"], :name => "index_orgs_on_following_count"
+  add_index "orgs", ["id"], :name => "index_orgs_on_id"
+  add_index "orgs", ["login"], :name => "index_orgs_on_login"
+
+  create_table "projects", :force => true do |t|
+    t.string   "homepage"
+    t.string   "has_downloads"
+    t.integer  "forks"
+    t.string   "url"
+    t.integer  "watchers"
+    t.string   "has_wiki"
+    t.boolean  "fork"
+    t.integer  "open_issues"
+    t.datetime "created_at"
+    t.string   "organization"
+    t.string   "description"
+    t.integer  "size"
+    t.boolean  "private"
+    t.boolean  "has_issues"
+    t.string   "name"
+    t.string   "owner"
+    t.integer  "org_id"
+  end
+
+  add_index "projects", ["created_at"], :name => "index_projects_on_created_at"
+  add_index "projects", ["fork"], :name => "index_projects_on_fork"
+  add_index "projects", ["forks"], :name => "index_projects_on_forks"
+  add_index "projects", ["name"], :name => "index_projects_on_name"
+  add_index "projects", ["open_issues"], :name => "index_projects_on_open_issues"
+  add_index "projects", ["org_id"], :name => "index_projects_on_org_id"
+  add_index "projects", ["organization"], :name => "index_projects_on_organization"
+  add_index "projects", ["size"], :name => "index_projects_on_size"
+  add_index "projects", ["watchers"], :name => "index_projects_on_watchers"
 
 end

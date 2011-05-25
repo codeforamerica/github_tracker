@@ -1,30 +1,7 @@
-class Coder 
-  include Mongoid::Document
+class Coder < ActiveRecord::Base
   has_many :commits
-
-  field :org_id 
-  field :gravatar_id 
-  field :company
-  field :name
-  field :created_at, type: DateTime
-  field :location
-  field :public_repo_count, type: Integer
-  field :public_gist_count, type: Integer
-  field :blog
-  field :following_count, type: Integer
-  field :type
-  field :followers_count, type: Integer
-  field :login
-  field :email
-  
-  index :org_id
-  index :login
-  index :following_count
-  index :followers_count
-  index :public_repo_count  
-  index :public_gist_count    
-  index :created_at
-    
+  has_many :projects, :through => :commits
+  has_many :orgs, :through => :commits    
   validates_uniqueness_of :login
   
   # given a coder name, goto github and grab the user details and create a new coder

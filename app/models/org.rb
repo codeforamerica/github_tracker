@@ -1,31 +1,9 @@
-class Org
-  include Mongoid::Document
+class Org < ActiveRecord::Base
   has_many :projects   
-  has_many :commits      
-
-  field :id
-  field :gravatar_id
-  field :company
-  field :name
-  field :created_at, type: DateTime
-  field :location
-  field :public_repo_count, type: Integer
-  field :public_gist_count, type: Integer
-  field :blog
-  field :following_count, type: Integer
-  field :type
-  field :followers_count, type: Integer
-  field :login 
-  field :email
+  has_many :commits   
+  has_many :coders, :through => commits   
   
-  index :id, :uniq => true
-  index :login, :uniq => true
-  index :email
-  index :followers_count
-  index :following_count
-  index :created_at    
-  
-  validates_uniqueness_of :login
+  validates_uniqueness_of :login, :on => :create, :message => "must be unique"
 
   # given an organization name, goto github and grab the organization details and create a new org
   #

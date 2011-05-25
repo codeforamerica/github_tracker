@@ -1,32 +1,4 @@
-class Project 
-  include Mongoid::Document
-  field :homepage 
-  field :has_downloads
-  field :forks, type: Integer
-  field :url 
-  field :watchers, type: Integer
-  field :has_wiki
-  field :fork, type: Boolean
-  field :open_issues, type: Integer
-  field :created_at, type: DateTime
-  field :organization
-  field :description
-  field :size, type: Integer
-  field :private
-  field :has_issues
-  field :name
-  field :owner
-  field :org_id
-
-  index :name, :uniq => true  
-  index :org_id
-  index :organization
-  index :fork
-  index :forks  
-  index :open_issues
-  index :created_at
-  index :size
-  index :watchers
+class Project < ActiveRecord::Base
   
   validates_uniqueness_of :name
   has_many :commits 
