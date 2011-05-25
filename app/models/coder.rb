@@ -16,6 +16,8 @@ class Coder < ActiveRecord::Base
     rescue
       return false, "We had a problem finding that user"
     else
+      col = Coder.columns.map(&:name)
+      coder.delete_if { |key| !col.include?(key)}
       return Coder.create!(coder)
     end
   end

@@ -22,6 +22,8 @@ class Project < ActiveRecord::Base
       else
         org =  Org.new.find_or_create(repo.organization)
         repo["org_id"] = org.id
+        col = Project.columns.map(&:name)
+        repo.delete_if { |key| !col.include?(key)}        
         return Project.create!(repo)
       end
     else

@@ -17,6 +17,8 @@ class Org < ActiveRecord::Base
     rescue
       return false, "We had a problem finding that organization"
     else
+      col = Org.columns.map(&:name)
+      org.delete_if { |key| !col.include?(key)}
       Org.create!(org)
     end
   end
@@ -34,6 +36,8 @@ class Org < ActiveRecord::Base
       return false, "We had a problem finding that organization"
     else
       repos.each do |repo|
+        col = Project.columns.map(&:name)
+        repo.delete_if { |key| !col.include?(key)}        
         self.projects.create(repo)        
       end
       self.projects
