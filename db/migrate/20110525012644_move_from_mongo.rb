@@ -78,7 +78,7 @@ class MoveFromMongo < ActiveRecord::Migration
       t.integer :open_issues
       t.datetime :created_at
       t.string :organization
-      t.string :description
+      t.text :description
       t.integer :size
       t.boolean :private
       t.boolean :has_issues
