@@ -1,25 +1,171 @@
 <% content_for :header do %>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>     
       <script type="text/javascript">
-        google.load('visualization', '1', {'packages':['motionchart']});
+        google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
+
         function drawChart() {
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Coder');
-          data.addColumn('date', 'Date');
-          data.addColumn('number', 'Commits');          
-          data.addRows(  
-            [
-            ['sferik',new Date (1988,0,1),1000],
-            ['mevans',new Date (1988,0,1),1150],
-            ['sferik',new Date (1989,6,1),1200],
-            ['mevans',new Date (1989,6,1),788]
-            ]
-            );
-          var chart = new google.visualization.MotionChart(document.getElementById('chart_div'));
-          chart.draw(data, {width: 600, height:300});
+          var data= new google.visualization.DataTable();
+          data.addColumn('number', 'projects');
+          data.addRows([
+            [1],
+            [20],
+            [45],
+            [66]
+          ]);
+
+          var chart = new google.visualization.AreaChart(document.getElementById('projects_chart_div'));
+          chart.draw(data, {width: 200, height: 200, legend: 'none', gridlineColor: 'none',
+                            chartArea:{left:0,top:0,width:"100%",height:"100%"},
+                            hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
+                            vAxis: {textPosition: 'none'}
+                           });
+                           
+           var data= new google.visualization.DataTable();
+           data.addColumn('number', 'coders');
+           data.addRows([
+             [1],
+             [20],
+             [45],
+             [66]
+           ]);
+
+           var chart = new google.visualization.AreaChart(document.getElementById('coders_chart_div'));
+           chart.draw(data, {width: 200, height: 200, legend: 'none', gridlineColor: 'none',
+                             chartArea:{left:0,top:0,width:"100%",height:"100%"},
+                             hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
+                             vAxis: {textPosition: 'none'}
+                            });
+                            
+            var data= new google.visualization.DataTable();
+            data.addColumn('number', 'commits');
+            data.addRows([
+              [1],
+              [20],
+              [45],
+              [66]
+            ]);
+
+            var chart = new google.visualization.AreaChart(document.getElementById('commits_chart_div'));
+            chart.draw(data, {width: 200, height: 200, legend: 'none', gridlineColor: 'none',
+                              chartArea:{left:0,top:0,width:"100%",height:"100%"},
+                              hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
+                              vAxis: {textPosition: 'none'}
+                             });                            
         }
       </script>
 <% end %>
 
-<div id="chart_div" style="width: 600px; height: 300px;"></div>
+<!--   ==============   HEADER   ==============   -->
+<div id="header" class="wrap">
+<!--Logo -->
+	<a href="/" class="like-btn" id="logo">Code for America</a>
+	<!--Tag line -->
+	<div id="tag-line">
+	<h1>Community Tracker</h1>
+	<h2>Stats on our Projects, Coders, Commits and More</h2>
+	</div>
+	<!--Social Links -->
+	<ul id="social">
+		<li><a href="http://codeforamerica.org/feed/" id="rss">RSS</a></li>
+		<li><a href="http://www.facebook.com/codeforamerica" id="fb">Facebook</a></li>
+		<li><a href="http://www.youtube.com/user/CodeforAmerica" id="yt">YouTube</a></li>
+		<li><a href="http://www.twitter.com/codeforamerica" id="tw">Twitter</a></li>
+		<li><a href="mailto:info@codeforamerica.org" id="mail">E-mail</a></li>
+	</ul>
+	<!--Navigation -->
+	<div id="nav-wrap">
+		<ul id="nav" class="menu">
+		  <li><a href="/dashboard">Home</a></li> 
+      <li><a href="/dashboard/projects">Projects</a></li> 
+      <li><a href="/dashboard/coders">Coders</a></li>
+      <li><a href="/dashboard/commits">Commits</a></li>              
+    </ul>
+	</div>
+</div>
+	    <div class="wrap-t"> 
+			<div class="wrap clearfix" id="become-wrap"> 
+			<!--Become a Fellow --> 
+<div class="box"> 
+	<h2><strong>1</strong> Our GitHub Stats</h2> 
+
+          <ul id="menu-cfa_fellows" class="menu">
+            <li><a href="http://www.codeforamerica.org/fellows">20 Fellows</a></li> 
+            <li><a href="/dashboard/coders"><%=@coders.size%> Coders</a></li>
+            <li><a href="/dashboard/projects"><%=@projects.size%> Projects</a></li>
+            <li><a href="/dashboard/commits"><%=@commits.size%> Commits</a></li>
+            <li><a href="/dashboard/projects"><%=@projects.sum(&:watchers)%> Watchers</a></li>            
+            <li><a href="/dashboard/projects"><%=@projects.sum(&:size)/1024%> MB</a></li>                        
+            <li><a href="/dashboard/projects"><%=@projects.sum(&:forks)%> Forks</a></li>                                    
+            <li><a href="/dashboard/projects"><%=@projects.sum(&:open_issues)%> Open Issues</a></li>                                                
+            <li><a href="/dashboard/commits">Started <%=@org.created_at.strftime("%m-%d-%y")%></a></li>
+          </ul>
+        </div> 
+		
+<!--Become a City --> 
+<div class="box"> 
+	<h2><strong>2</strong> <%=@coders.size%> Coders </h2>
+<div id="coders_chart_div"></div>	 
+	<ul id="menu-cfa_city" class="menu">
+    <%@coders_by_commit_size[0..10].each do |x|%>
+    <li><a href="http://www.github.com/<%=x[0].login%>"><%=x[0].login%> <br><%=x[1]%> commits</li>
+    <%end%>
+  </ul>
+  </div> 
+
+	<!--Get Involved --> 
+	<div class="box"> 
+<h2><strong>3</strong><%=@projects.size%> Projects</h2> 
+<div id="projects_chart_div"></div>
+<ul id="menu-cfa_get_involved" class="menu">
+  <% freq = @projects.map(&:language).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    freq.sort_by { |v| freq[v] }.each do |project|%>
+    <% if project[0]!=nil%>
+    <li><a href="/dashboard/projects"><%=project[1]%> <%=project[0]%> projects</a></li> 
+    <% end %>
+  <% end %>
+  
+            </ul>
+          </div> 
+<!--Support CfA --> 
+<div class="box"> 
+  <h2><strong>4</strong><%=@commits.size%> Commits</h2>
+    <div id="commits_chart_div"></div> 
+      <ul id="menu-cfa_support" class="menu">
+        <%@projects_by_commit_size[0..10].each do |x|%>
+        <li><a href="<%=x[0].url%>"><%=x[0].name%> <br><%=x[1]%> commits</li>
+        <%end%>
+        
+      </ul>
+    </div> 
+    </div> 
+		</div> 
+		<div class="wrap-b">&nbsp;</div> 
+		<div class="wrap clearfix" id="whos"> 
+		</div> 
+		<div class="wrap-t"> 
+			<div class="wrap clearfix"> 
+			<!--Helping Cities Solve Common Issues --> 
+<div id="cities-issues"> 
+</div> 
+<!--CfA Blog --> 
+<div id="cfa-blog"> 
+</div> 
+<!--Tweets --> 
+			<div id="cfa-blog">
+</div> 
+			</div> 
+		</div> 
+		
+		
+ 
+	</div><!-- #main --> 
+ 
+ <!--   ==============   FOOTER   ==============   --> 
+  <div id="footer" > 
+  	<div class="wrap"> 
+    </div>
+  <div>
+  <!--   ==============   END FOOTER   ==============   --> 
+
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'72c27113-3bfc-4c68-a34e-b85a85d478db'});</script> 

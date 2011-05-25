@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+<meta charset="UTF-8" />
+<script type="text/javascript">
+  var _kmq = _kmq || [];
+  function _kms(u){
+    setTimeout(function(){
+      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+      s.src = u; f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/b10955655811d1d8f1ae89b90b11d99540d5db32.1.js');
+</script>
+<title>Code for America | A New Kind of Public Service</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="http://codeforamerica.org/wp-content/themes/cfawp2012/style.css" />
+<link rel="SHORTCUT ICON" href="http://codeforamerica.org/wp-content/themes/cfawp2012/images/favicon.ico"/> 
+<link rel="pingback" href="http://codeforamerica.org/xmlrpc.php" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<meta name="description" content="Helping governments work better for everyone with the people and the power of the web."> <script type="text/javascript" src="http://codeforamerica.org/wp-content/themes/cfawp2012/javascripts/header-min.js"></script>
+<script type="text/javascript" src="http://codeforamerica.org/wp-content/themes/cfawp2012/javascripts/carousel.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("ul.menu").superfish({pathClass: "current-menu-item" }); 
+  $("#video-gallery").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 4000);
+});
+</script>
+<link rel="alternate" type="application/rss+xml" title="Code for America &raquo; Feed" href="http://codeforamerica.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Code for America &raquo; Comments Feed" href="http://codeforamerica.org/comments/feed/" />
+<link rel='stylesheet' id='author-avatars-shortcode-css'  href='http://codeforamerica.org/wp-content/plugins/author-avatars/css/shortcode.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='author-avatars-widget-css'  href='http://codeforamerica.org/wp-content/plugins/author-avatars/css/widget.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://codeforamerica.org/wp-content/plugins/contact-form-7/styles.css?ver=2.4.5' type='text/css' media='all' />
+<script type='text/javascript' src='http://codeforamerica.org/wp-includes/js/l10n.js?ver=20101110'></script>
+<script type='text/javascript' src='http://codeforamerica.org/wp-includes/js/jquery/jquery.js?ver=1.4.4'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://codeforamerica.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://codeforamerica.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Code for America' href='http://codeforamerica.org/' />
+<meta name="generator" content="WordPress 3.1.2" />
+<script type="text/javascript">
+//<![CDATA[
+var _wpcf7 = { cached: 1 };
+//]]>
+</script>
+
+
+
+</head>
+
+
+
+<body class="home blog">
+
+<!--   ==============   HEADER   ==============   -->
+<div id="header" class="wrap">
+<!--Logo -->
+	<a href="/" class="like-btn" id="logo">Code for America</a>
+	<!--Tag line -->
+	<div id="tag-line">
+	<img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/header.png"><!--	<h1>A New Kind of Public Service</h1>
+		<h2>We connect tech leaders and city governments to build civic apps that make lives better</h2>-->
+	</div>
+	<!--Social Links -->
+	<ul id="social">
+		<li><a href="http://codeforamerica.org/feed/" id="rss">RSS</a></li>
+		<li><a href="http://www.facebook.com/codeforamerica" id="fb">Facebook</a></li>
+		<li><a href="http://www.youtube.com/user/CodeforAmerica" id="yt">YouTube</a></li>
+		<li><a href="http://www.twitter.com/codeforamerica" id="tw">Twitter</a></li>
+		<li><a href="mailto:info@codeforamerica.org" id="mail">E-mail</a></li>
+	</ul>
+	<!--Navigation -->
+	<div id="nav-wrap">
+		<ul id="nav" class="menu"><li id="menu-item-2468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2468"><a href="/">Home</a></li>
+<li id="menu-item-2489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2489"><a href="http://codeforamerica.org/about/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-2487" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2487"><a href="http://codeforamerica.org/what-we-do/">What We Do</a></li>
+	<li id="menu-item-2488" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2488"><a href="http://codeforamerica.org/who-we-are/">Who We Are</a></li>
+	<li id="menu-item-2492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2492"><a href="http://codeforamerica.org/broader-impact/">Broader Impact</a></li>
+	<li id="menu-item-2591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2591"><a href="http://codeforamerica.org/press/">Press</a></li>
+	<li id="menu-item-2666" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2666"><a href="http://codeforamerica.org/donors/">Donors</a></li>
+	<li id="menu-item-3126" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3126"><a href="http://codeforamerica.org/about/contact/">Contact</a></li>
+</ul>
+</li>
+<li id="menu-item-2506" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2506"><a href="http://codeforamerica.org/fellows/">Fellows</a>
+<ul class="sub-menu">
+	<li id="menu-item-2496" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2496"><a href="http://codeforamerica.org/fellows/institute/">Institute</a></li>
+	<li id="menu-item-2497" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2497"><a href="http://codeforamerica.org/2011-program-timeline/">Timeline</a></li>
+	<li id="menu-item-2498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2498"><a href="http://codeforamerica.org/fellows/fellow-selection/">Selection Process</a></li>
+	<li id="menu-item-2668" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2668"><a href="http://codeforamerica.org/fellows/apply">Apply</a></li>
+	<li id="menu-item-3434" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3434"><a href="http://codeforamerica.org/2011-fellows/">2011 Fellows</a></li>
+</ul>
+</li>
+<li id="menu-item-2940" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2940"><a href="http://codeforamerica.org/cities/">Cities</a>
+<ul class="sub-menu">
+	<li id="menu-item-2505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2505"><a href="http://codeforamerica.org/boston/">Boston</a></li>
+	<li id="menu-item-2490" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2490"><a href="http://codeforamerica.org/cc/">Civic Commons</a></li>
+	<li id="menu-item-2493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2493"><a href="http://codeforamerica.org/philadelphia/">Philadelphia</a></li>
+	<li id="menu-item-2494" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2494"><a href="http://codeforamerica.org/seattle/">Seattle</a></li>
+	<li id="menu-item-2502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2502"><a href="http://codeforamerica.org/cities/city-impact/">City Program</a></li>
+	<li id="menu-item-3030" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3030"><a href="http://codeforamerica.org/model-city-projects/">Model Projects</a></li>
+</ul>
+</li>
+<li id="menu-item-2653" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2653"><a href="http://codeforamerica.org/issues/">Issues</a>
+<ul class="sub-menu">
+	<li id="menu-item-2533" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2533"><a href="http://codeforamerica.org/issues/openness/">Openness</a></li>
+	<li id="menu-item-2654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2654"><a href="http://codeforamerica.org/issues/efficiency/">Efficiency</a></li>
+	<li id="menu-item-2655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2655"><a href="http://codeforamerica.org/issues/education/">Education</a></li>
+	<li id="menu-item-2656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2656"><a href="http://codeforamerica.org/issues/participation/">Participation</a></li>
+</ul>
+</li>
+<li id="menu-item-4676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4676"><a href="http://codeforamerica.org/projects/">Get Involved</a>
+<ul class="sub-menu">
+	<li id="menu-item-2667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2667"><a href="http://codeforamerica.org/fellows/spread-the-word/">Spread the Word</a></li>
+	<li id="menu-item-2669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2669"><a href="http://codeforamerica.org/supplies/">In-Kind Contributions</a></li>
+	<li id="menu-item-2670" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2670"><a href="http://codeforamerica.org/intern/">Internship Opportunities</a></li>
+</ul>
+</li>
+<li id="menu-item-2553" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2553"><a href="http://codeforamerica.org/blog/">Blog</a>
+<ul class="sub-menu">
+	<li id="menu-item-5285" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5285"><a href="http://codeforamerica.org/labs/">CfA Labs Blog</a></li>
+	<li id="menu-item-3204" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3204"><a href="http://codeforamerica.org/category/news/">News</a></li>
+	<li id="menu-item-3205" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3205"><a href="http://codeforamerica.org/category/dispatches/">Dispatches</a></li>
+	<li id="menu-item-3206" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3206"><a href="http://codeforamerica.org/category/commentary/">Commentary</a></li>
+	<li id="menu-item-3207" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3207"><a href="http://codeforamerica.org/category/get-involved/">Get Involved</a></li>
+</ul>
+</li>
+</ul>		<a href="/donate" id="donate" class="like-btn">Donate</a>
+	</div>
+</div>
+	
+
+	<div class="wrap-b">
+	  <!--Video Gallery -->	  
+	  	<div class="wrap clearfix" id="video-gallery">
+          <ul id="slide-nav" class="thumbs"> 
+         <div style="width: 181px; float: left;">     
+	<li><a href="#slide-1"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/tim.jpg" alt="" /><strong><span>The Fellowship</span></strong></a></li> 
+              <li><a href="#slide-2"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/boston.jpg" alt="" /><strong><span>Boston</span></strong></a></li>       
+              <li><a href="#slide-3"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/philly.jpg" alt="" /><strong><span>Philadelphia</span></strong></a></li> 
+		</div>
+       
+ 		<div style="float: left;">
+	
+			 <div id="slide-1" class="player"> 
+	             									
+											<object width="547" height="330"><param name="movie" value="http://www.youtube.com/v/QssN_-OCDnI?fs=1&hl=en_US&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/QssN_-OCDnI?fs=1&hl=en_US&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="547" height="330"></embed></object>					     	        
+	          </div>
+       
+        <div id="slide-2" class="player"> 
+          <a href="/boston" class="post-image"> 
+          <img width="550" height="330"  src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/boston.jpg" class="attachment-rotator-post-image wp-post-image" alt="bridge-2" title="bridge-2" /> 
+		<span class="title"><strong>The Boston Project:</strong><br />Improving High School Education by Connecting the Community</span> 
+  
+          </a> 
+        </div>
+        <div id="slide-3" class="player"> 
+           <a href="/philadelphia" class="post-image"> 
+           <img width="550" height="330"  src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/philly.jpg" class="attachment-rotator-post-image wp-post-image" alt="bridge-2" title="bridge-2" />  
+		<span class="title"><strong>The Philadelphia Project:</strong><br />Helping Citizens Get Involved to Support Public Services</span> 
+ 
+           </a> 
+         </div>
+        <div id="slide-4" class="player"> 
+            <!--<a href="/fellows/nominate" class="post-image"> 
+            <img width="550" height="330"  src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/codedsky.jpg" class="attachment-rotator-post-image wp-post-image" alt="bridge-2" title="bridge-2" />   
+			<span class="title"><strong>Tag, You're It:</strong><br />Nominate a Colleague for the 2012 Code for America Fellowship</span> 
+            </a>-->
+            
+            <object width="547" height="330"><param name="movie" value="http://www.youtube.com/v/JEU2p1rrLHo?fs=1&amp;hl=en_US&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="http://www.youtube.com/v/JEU2p1rrLHo?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="547" height="330"></object>
+            
+	        </div>
+          <div id="slide-5" class="player"> 
+             <a href="/seattle" class="post-image"> 
+             <img width="550" height="330"  src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/seattle.jpg" class="attachment-rotator-post-image wp-post-image" alt="bridge-2" title="bridge-2" />   
+			<span class="title"><strong>The Seattle Project:</strong><br />Empowering Civic Leaders to Mobilize their Communities</span> 
+
+             </a> 
+           </div>
+           <div id="slide-6" class="player"> 
+              <a href="/dc" class="post-image"> 
+              <img width="550" height="330"  src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/dc.jpg" class="attachment-rotator-post-image wp-post-image" alt="bridge-2" title="bridge-2" />   
+			<span class="title"><strong>The DC Project:</strong><br />Working with Government to Share Technology for the Public Good</span> 
+
+              </a> 
+            </div> </div>
+
+<div style="width: 181px; float: right;">   
+        <li><a href="#slide-4"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/karla.png" alt="" /><strong><span>Fellow Spotlight</span></strong></a></li> 
+        <li><a href="#slide-5"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/seattle.jpg" alt="" /><strong><span>Seattle</span></strong></a></li>
+        <li><a href="#slide-6"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/headers/dc.jpg" alt="" /><strong><span>Washington DC</span></strong></a></li>      
+ </div>
+          </ul>                                                                
+		</div>
+	  </div>
+	  <!--Newsletter Subscribtion -->
+	
+	
+	
+	  <form name="signup" action="http://action.codeforamerica.org/page/signup/cfa-email" method="post" id="signup" class="clearfix">
+	  	<strong>CONNECT WITH CfA</strong> <input type="text" value="Email"  type="email" style="width: 160px;" id="email" name="email" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" /><input type="text" value="Zip Code"  type="email" id="zip" name="zip" style="border-left: 2px solid #f2f2f2; width: 70px;" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" /><button type="submit" class="like-btn">Send</button> <span>You should sign up to receive <br />
+our (infrequent) newsletter</span>
+	  </form>
+	    <div class="wrap-t">
+			<div class="wrap clearfix" id="become-wrap">
+			<!--Become a Fellow -->
+				<div class="box">
+					<h2><strong>1</strong> Fellowship</h2>
+					<img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/become-fellow.jpg" alt="Become a Fellow" />
+					<ul id="menu-cfa_fellows" class="menu"><li id="menu-item-2479" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2479"><a href="/fellows/">What Our Fellows Do</a></li>
+<li id="menu-item-2478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2478"><a href="/2011-code-for-america-fellows/">Meet the 2011 Fellows</a></li>
+<li id="menu-item-2480" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2480"><a href="/fellows/apply">Apply Now</a></li>
+</ul>				</div>
+		
+				<!--Become a City -->
+				<div class="box">
+					<h2><strong>2</strong> City Program</h2>
+					<img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/become-city.jpg" alt="Become a City" />
+					<ul id="menu-cfa_city" class="menu"><li id="menu-item-2475" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2475"><a href="/cities/city-impact/">How We Help Cities</a></li>
+<li id="menu-item-2476" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2476"><a href="/cities">2011 City Partners</a></li>
+<li id="menu-item-2477" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2477"><a href="/cities/apply">Partner With Us</a></li>
+</ul>				</div>
+				
+					<!--Get Involved -->
+					<div class="box">
+						<h2><strong>3</strong> Volunteers</h2>
+						<img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/get-involved.jpg" alt="Get Involved" />
+						<ul id="menu-cfa_get_involved" class="menu"><li id="menu-item-2481" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2481"><a href="http://action.codeforamerica.org/page/s/2011-signup">Join the Corp</a></li>
+<li id="menu-item-2483" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2483"><a href="http://action.codeforamerica.org/page/share/cfa">Spread the Word</a></li>
+<li id="menu-item-2482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2482"><a href="http://codeforamerica.org/cities/citizen-action-center/">Contact Your City</a></li>
+</ul>					</div>
+				<!--Support CfA -->
+				<div class="box">
+					<h2><strong>4</strong> Supporters</h2>
+					<img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/support-cfa.jpg" alt="Support CfA" />
+					<ul id="menu-cfa_support" class="menu"><li id="menu-item-2485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2485"><a href="/donors/">Current Supporters</a></li>
+<li id="menu-item-2993" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2993"><a href="http://codeforamerica.org/sponsor/">Sponsor Our Work</a></li>
+<li id="menu-item-2486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2486"><a href="/donate">Donate</a></li>
+</ul>				</div>
+			</div>
+		</div>
+		<div class="wrap-b">&nbsp;</div>
+		<div class="wrap clearfix" id="whos">
+			<h3>Who’s Got Our Back?</h3>
+		<div class="prev"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/prev-arrow.gif"></div>	<div id="mycarousel">
+                <ul>
+	<li><a href="http://www.knightfoundation.org" title="Knight Foundation"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/knight-logo.png"></a></li>
+	<li><a href="http://www.omidyar.com/" title="Omidyar Foundation"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/on-logo.png"></a></li>
+    <li><a href="http://www.rockefellerfoundation.org/" title="Rockefeller Foundation"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/rockefeller-logo.png"></a></li>
+    <li><a href="http://www.esri.com" title="ESRI"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/esri-logo.png"></a></li>                
+    <li><a href="http://www.cisco.com" title="Cisco"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/cisco-logo.jpg"></a></li>  
+	<li><a href="http://www.oreillymedia.com" title="O'Reilly Media "><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/oreilly-logo.png"></a></li>
+	<li><a href="http://www.casefoundation.org" title="Case Foundation"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/case-logo.png"></a></li>  
+    
+    <li><a href="http://www.jointconcepts.com" title="Joint Concepts"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/jc-logo.png"></a></li>
+ 	
+	<li><a href="http://www.sunlightfoundation.com" title="Sunlight Foundation"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/sunlight-logo.png"></a></li>
+    
+	<li><a href="/donors" title="More"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/more.png"></a></li>
+	
+                  <li><a href="http://www.sunlightfoundation.org" title="Sunlight Foundation"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/logos/sunlight-logo.png"></a></li>
+    </ul>             				
+             </div><div class="next"><img src="http://codeforamerica.org/wp-content/themes/cfawp2012/images/next-arrow.gif"></div>
+			
+		</div>
+		<div class="wrap-t">
+			<div class="wrap clearfix">
+			<!--Helping Cities Solve Common Issues -->
+				<div id="cities-issues">
+					<h2>Helping Cities Solve <br />
+					Common Issues</h2>
+														
+											<img src="http://50.16.221.90/cfa_wordpress/wp-content/themes/cfawp2012/images/helping-cities.jpg" alt="Vivamus fermentum sollicitudin laoreet" class="left"><h3>Connecting the Educational Community</h3><p>Improving our system of education is a recognized imperative at all levels. The foundation for many current attempts to improve education is the use of data to make decisions, with states and districts creating systems to track and report standardized test scores. </p><a href="/issues/education" class="btn">Read More</a>									</div>
+				<!--CfA Blog -->
+				
+				
+
+				<div id="cfa-blog">
+					<h2>CfA Blog <a href="http://c4a.me/feed/" class="like-btn">RSS</a></h2>
+							  
+								     <ul>   								           <li> <h3><a href="http://codeforamerica.org/2011/05/25/were-hiring/">We&#8217;re Hiring: Help Us Tell Our Story <strong>»</strong></a></h3>
+										<p>		Elsewhere you&#8217;d be given a product to market, or maybe even...										</p>
+								</li>
+								 
+								        								           <li> <h3><a href="http://codeforamerica.org/2011/05/25/craigslist-bootcamp/">Join CfA at the Craigslist Bootcamp <strong>»</strong></a></h3>
+										<p>		We are proud to partner with Craigslist Foundation on their 8th...										</p>
+								</li>
+								 
+								        	<script type="text/javascript">
+	// <![CDATA[
+		var disqus_shortname = 'codeforamerica';
+		var disqus_domain = 'disqus.com';
+		(function () {
+			var nodes = document.getElementsByTagName('span');
+			for (var i = 0, url; i < nodes.length; i++) {
+				if (nodes[i].className.indexOf('dsq-postid') != -1) {
+					nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('rel'));
+					url = nodes[i].parentNode.href.split('#', 1);
+					if (url.length == 1) url = url[0];
+					else url = url[1]
+					nodes[i].parentNode.href = url + '#disqus_thread';
+				}
+			}
+			var s = document.createElement('script'); s.async = true;
+			s.type = 'text/javascript';
+			s.src = 'http://' + disqus_domain + '/forums/' + disqus_shortname + '/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+	//]]>
+	</script>
+				
+					</ul>
+					<a href="/code-for-america-blog/" class="btn">Go to Blog</a>
+				</div>
+				<!--Tweets -->
+			<div id="tweets">				
+				<h2>What’s Being Said About CfA ?</h2>				
+				<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+                <script>
+                new TWTR.Widget({
+                  version: 2,
+                  type: 'search',
+                  search: 'codeforamerica',
+                  interval: 3000,
+                  title: '',
+                  subject: '',
+                  width: 280,
+                  height: 170,
+                  theme: {
+                    shell: {
+                      background: '#ebebeb',
+                      color: '#ffffff'
+                    },
+                    tweets: {
+                      background: '#ebebeb',
+                      color: '#444444',
+                      links: '#1985b5'
+                    }
+                  },
+                  features: {
+                    scrollbar: false,
+                    loop: true,
+                    live: true,
+                    hashtags: true,
+                    timestamp: true,
+                    avatars: true,
+                    toptweets: true,
+                    behavior: 'default'
+                  }
+                }).render().start();
+                </script>
+					<style>.twtr-hd { padding: 0px; }
+					.twtr-ft {display: none;}
+					.twtr-tweet {font-size: 10px;}
+					
+					</style>
+				</div>
+			</div>
+		</div>
+		
+		
+
+	</div><!-- #main -->
+
+ <!--   ==============   FOOTER   ==============   -->
+  <div id="footer" >
+  	<div class="wrap">
+	<h4 id="logo-f"><a href="http://codeforamerica.org" class="like-btn">Code for America</a></h4>
+		<ul>
+			<li><h4><a href="/">Home</a></h4>
+			</li>
+			<li><h4><a href="/about">About</a></h4>
+				<ul>
+					<li><a href="/who-we-are">Who We Are</a></li>
+					<li><a href="/what-we-do">What We Do</a></li>
+					<li><a href="/donors">Donors</a></li>
+					<li><a href="/press">Press</a></li>
+				</ul>
+			</li>
+			<li><h4><a href="/fellows">Fellows</a></h4>
+				<ul>
+					<li><a href="/fellows/institute">Timeline</a></li>
+					<li><a href="/fellows/2012-program-and-timeline/">Institute</a></li>
+					<li><a href="/fellows/fellows-selection">Process</a></li>
+					<li><a href="/fellows/apply">Apply</a></li>
+				</ul>
+			</li>
+			<li><h4><a href="/cities">Cities</a></h4>
+				<ul>
+					<li><a href="/boston">Boston</a></li>
+					<li><a href="/dc">Washington DC</a></li>
+					<li><a href="/philadelphia">Philadelphia</a></li>
+					<li><a href="/seattle">Seattle</a></li>		
+				</ul>
+			</li>
+			<li><h4><a href="/issues">Issues</a></h4>
+				<ul>
+					<li><a href="/issues/openness">Openness</a></li>
+					<li><a href="/issues/participation">Participation</a></li>
+					<li><a href="/issues/education">Education</a></li>
+					<li><a href="/issues/efficiency">Efficiency</a></li>
+				</ul>
+			</li>
+			<li><h4><a href="/donate">Donate</a></h4>
+				<ul>
+					<li><a href="/donate">Financial Contributions</a></li>
+					<li><a href="/supplies">In-Kind Donations</a></li>
+				</ul>
+			</li>
+			<li><h4><a href="#">Social</a></h4>
+				<ul>
+					<li><a href="http://facebook.com/codeforamerica">Facebook</a></li>
+					<li><a href="http://twitter.com/codeforamerica">Twitter</a></li>
+					<li><a href="http://www.youtube.com/user/CodeforAmerica">YouTube</a></li>
+					<li><a href="/feed">RSS</a></li>
+				</ul>
+			</li>
+			<li><h4><a href="#">Search</a></h4><form role="search" method="get" id="searchform" action="/">
+		<input type="text" value="..." name="s" id="s" style="border: 1px dotted #ccc; font-weight: bold; padding-left: 2px; width: 140px;" value="First name" onfocus="if (this.value == '...') {this.value = '';}" onblur="if (this.value == '') {this.value = '...';}">
+						</form></li>
+		</ul>
+		<p id="copyr"><small>Code for America Labs, Inc is a non-partisan, non-political 501(c)(3) organization. Content is licensed through <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons</a>.<br>Site designed by <a href="http://www.jointconcepts.com/">Joint Concepts</a>.</small></p>
+	</div>
+	<script type='text/javascript' src='http://codeforamerica.org/wp-content/plugins/contact-form-7/jquery.form.js?ver=2.52'></script>
+<script type='text/javascript' src='http://codeforamerica.org/wp-content/plugins/contact-form-7/scripts.js?ver=2.4.5'></script>
+  </div>
+  <!--   ==============   END FOOTER   ==============   -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20825280-1']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+var _sf_async_config={uid:20661,domain:"codeforamerica.org"};
+(function(){
+  function loadChartbeat() {
+    window._sf_endpt=(new Date()).getTime();
+    var e = document.createElement('script');
+    e.setAttribute('language', 'javascript');
+    e.setAttribute('type', 'text/javascript');
+    e.setAttribute('src',
+       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+       "js/chartbeat.js");
+    document.body.appendChild(e);
+  }
+  var oldonload = window.onload;
+  window.onload = (typeof window.onload != 'function') ?
+     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+})();
+
+</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'72c27113-3bfc-4c68-a34e-b85a85d478db'});</script>
+
+</body>
+</html>
+
+<!-- Dynamic page generated in 0.348 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2011-05-25 10:43:00 -->
+<!-- super cache -->
