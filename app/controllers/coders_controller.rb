@@ -18,7 +18,7 @@ class CodersController < ApplicationController
   # @param public_repo_count>           
   # @param public_gist_count<      
   # @param public_gist_count>  
-  # @return Coders
+  # @return Coders.
   # @example /coders.json /coders/sferik.json /codeforamerica/shortstack/coders.json
 
   def index
