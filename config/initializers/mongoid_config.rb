@@ -1,1 +1,0 @@
-Mongoid::Config.use_utc = true
