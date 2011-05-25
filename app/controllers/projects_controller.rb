@@ -26,9 +26,9 @@ class ProjectsController < ApplicationController
       org = Org.where(:name => params[:organization]).first
     end
     
-    @conditions << {"org_id" => org.id} unless org.nil? 
-    
-    @project = Project.where(@conditions).paginate(
+    @conditions << "org_id = org.id" unless org.nil? 
+
+    @project = Project.where(@conditions.join(" and ")).paginate(
       :per_page => 25, :page => params[:page])
     
     @items = [:results => @project.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @project.total_entries]  

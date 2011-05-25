@@ -1,7 +1,7 @@
 class Org < ActiveRecord::Base
   has_many :projects   
   has_many :commits   
-  has_many :coders, :through => commits   
+  has_many :coders, :through => :commits   
   
   validates_uniqueness_of :login, :on => :create, :message => "must be unique"
 
@@ -50,13 +50,5 @@ class Org < ActiveRecord::Base
     org = Org.where(:login => name).first
     !org.blank? ? org : self.get_details(name)
   end
-
-  # mongo's not so great about has many through, so we'll have to pull them manually  
-  def coders
-    coders = []
-    self.commits.distinct(:coder_id).each {|x| coders << Coder.where(:_id => x).first }
-    coders
-  end
-
 
 end

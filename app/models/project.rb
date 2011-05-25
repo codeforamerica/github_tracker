@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   
   validates_uniqueness_of :name
   has_many :commits 
+  has_many :coders, :through => :commits
   belongs_to :org    
 
   
@@ -77,13 +78,5 @@ class Project < ActiveRecord::Base
     end
     
   end
-  
-  # mongo's not so great about has many through, so we'll have to pull them manually
-  def coders
-    coders = []
-    self.commits.distinct(:coder_id).each {|x| coders << Coder.where(:_id => x).first }
-    coders
-  end
-
   
 end

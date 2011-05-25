@@ -14,6 +14,7 @@ class MoveFromMongo < ActiveRecord::Migration
       t.string :type
       t.integer :followers_count
       t.string :login
+      t.boolean :permission
       t.string :email
     end
 
@@ -49,6 +50,7 @@ class MoveFromMongo < ActiveRecord::Migration
       t.string :location
       t.integer :public_repo_count
       t.integer :public_gist_count
+      t.boolean :permission
       t.string :blog
       t.integer :following_count
       t.string :type
@@ -72,6 +74,7 @@ class MoveFromMongo < ActiveRecord::Migration
       t.integer :watchers
       t.string :has_wiki
       t.boolean :fork
+      t.string :language
       t.integer :open_issues
       t.datetime :created_at
       t.string :organization
@@ -79,7 +82,9 @@ class MoveFromMongo < ActiveRecord::Migration
       t.integer :size
       t.boolean :private
       t.boolean :has_issues
+      t.datetime :pushed_at
       t.string :name
+      t.boolean :permission      
       t.string :owner
       t.integer :org_id
     end

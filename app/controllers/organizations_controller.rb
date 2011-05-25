@@ -17,7 +17,7 @@ class OrganizationsController < ApplicationController
   def index
       conditions(Org)
     
-      @org = Org.where(@conditions).paginate(
+      @org = Org.where(@conditions.join(" and ")).paginate(
         :per_page => 25, :page => params[:page])
     
       respond_to do |format|

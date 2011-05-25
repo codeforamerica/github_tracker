@@ -2,41 +2,24 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def conditions(model)
-    @conditions = {}
-
-     operators = {
-       ">" => :gte, 
-       "<" => :lte, 
-       "!" => :ne,
-       "__in" => :in,
-       "__nin" => :nin,
-       "__all" => :all
-     }
+    @conditions = []
+     operators = [">", "<", "!"]
 
      params.each do |key,value|
        operator = nil
-
-       if key =~ /^(.*?)(#{operators.keys.join "|"})$/
+       if key =~ /^(.*?)(#{operators.join "|"})$/
          key = $1
-         operator = operators[$2]
+         operator = $2
        end
-       
-       next if not model.index_options.include? key.to_sym # allow filtering only on indexed fields
 
-       if [:nin, :in, :all].include? operator
-         value = value.split(",")
-       end
+       next if not model.columns.map(&:name).include? key # allow filtering only on indexed fields
 
        if operator
-         if @conditions[key].nil? or @conditions[key].is_a?(Hash)
-           @conditions[key] ||= {}
-           @conditions[key]["$#{operator}"] = value 
-         else
-           # this key is already assigned, ignore it
-         end
+         @conditions << key.to_s + " " + operator + "='" + value.to_s + "'" 
        else
-         @conditions[key] = value
+         @conditions << key.to_s + " " + "='" + value.to_s + "'" 
        end
+       
      end
   end
 end

@@ -29,9 +29,9 @@ class CodersController < ApplicationController
       org = Org.where(:name => params[:organization]).first
     end
     
-    @conditions << {"org_id" => org.id} unless org.nil?     
+    @conditions << "org_id = '#{org.id}'" unless org.nil?     
     
-    @coder = Coder.where(@conditions).paginate(
+    @coder = Coder.where(@conditions.join(" and ")).paginate(
       :per_page => 25, :page => params[:page])
       
     @items = [:results => @coder.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @coder.total_entries]    

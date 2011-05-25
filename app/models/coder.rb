@@ -30,14 +30,5 @@ class Coder < ActiveRecord::Base
     coder = Coder.where(:login => name).first
     !coder.blank? ? coder : self.get_details(name)
   end
-  
-  # mongo's not so great about has many through, so we'll have to pull them manually
-  def projects
-    projects = []
-    self.commits.distinct(:project_id).each {|x| projects << Project.where(:_id => x).first }
-    projects
-  end
-  
-
 
 end
