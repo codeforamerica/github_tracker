@@ -4,54 +4,32 @@
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
 
-        function drawChart() {
-          var data= new google.visualization.DataTable();
-          data.addColumn('number', 'projects');
-          data.addRows([
+        
+          var project_data= new google.visualization.DataTable();
+          project_data.addColumn('number', 'projects');
+          project_data.addRows([
             [1],
             [20],
             [45],
             [66]
-          ]);
-
-          var chart = new google.visualization.AreaChart(document.getElementById('projects_chart_div'));
+          ]);                         
+        
+        
+        function chart_object(data,div_name) {
+          var chart = new google.visualization.AreaChart(document.getElementById(div_name));
           chart.draw(data, {width: 200, height: 200, legend: 'none', gridlineColor: 'none',
                             chartArea:{left:0,top:0,width:"100%",height:"100%"},
                             hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
                             vAxis: {textPosition: 'none'}
                            });
-                           
-           var data= new google.visualization.DataTable();
-           data.addColumn('number', 'coders');
-           data.addRows([
-             [1],
-             [20],
-             [45],
-             [66]
-           ]);
+        }
 
-           var chart = new google.visualization.AreaChart(document.getElementById('coders_chart_div'));
-           chart.draw(data, {width: 200, height: 200, legend: 'none', gridlineColor: 'none',
-                             chartArea:{left:0,top:0,width:"100%",height:"100%"},
-                             hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
-                             vAxis: {textPosition: 'none'}
-                            });
-                            
-            var data= new google.visualization.DataTable();
-            data.addColumn('number', 'commits');
-            data.addRows([
-              [1],
-              [20],
-              [45],
-              [66]
-            ]);
 
-            var chart = new google.visualization.AreaChart(document.getElementById('commits_chart_div'));
-            chart.draw(data, {width: 200, height: 200, legend: 'none', gridlineColor: 'none',
-                              chartArea:{left:0,top:0,width:"100%",height:"100%"},
-                              hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
-                              vAxis: {textPosition: 'none'}
-                             });                            
+
+        function drawChart() {
+         chart_object(project_data,"projects_chart_div");
+         chart_object(commit_data,div_name);
+         chart_object(coder_data,div_name);                                
         }
       </script>
 <% end %>

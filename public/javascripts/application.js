@@ -3,3 +3,6 @@
 
 
       
+function hi() {
+    alert('hi!');
+}
