@@ -17,6 +17,6 @@ GithubTracker::Application.routes.draw do
   match 'coders/:login/projects' => 'coders#projects', :format => :get  
   match 'projects/:name/commits' => 'commits#index', :format => :get  
   
-  root :to => 'organizations#index'
+  root :to => 'dashboard#index'
 
 end
