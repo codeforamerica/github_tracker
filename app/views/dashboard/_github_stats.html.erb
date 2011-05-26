@@ -1,0 +1,14 @@
+<div class="box"> 
+  <h2>Our GitHub Stats</h2> 
+  <ul id="menu-cfa_fellows" class="menu">
+    <li><a href="http://www.codeforamerica.org/fellows">20 Fellows</a></li> 
+    <li><a href="/dashboard/coders"><%=@coders.size%> Coders</a></li>
+    <li><a href="/dashboard/projects"><%=@projects.size%> Projects</a></li>
+    <li><a href="/dashboard/commits"><%=@commits.size%> Commits</a></li>
+    <li><a href="/dashboard/projects"><%=@projects.sum(&:watchers)%> Watchers</a></li>            
+    <li><a href="/dashboard/projects"><%=@projects.sum(&:size)/1024%> MB</a></li>                        
+    <li><a href="/dashboard/projects"><%=@projects.sum(&:forks)%> Forks</a></li>                                    
+    <li><a href="/dashboard/projects"><%=@projects.sum(&:open_issues)%> Open Issues</a></li>                                                
+    <li><a href="/dashboard/commits">Started <%=@org.created_at.strftime("%m-%d-%y")%></a></li>
+  </ul>
+</div>

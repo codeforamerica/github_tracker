@@ -1,0 +1,9 @@
+<div class="box"> 
+  <h2><%=@commits.size%> Commits</h2>
+    <div id="commits_chart_div"></div> 
+      <ul id="menu-cfa_support" class="menu">
+        <%@projects_by_commit_size[0..10].each do |x|%>
+        <li><a href="<%=x[0].url%>"><%=x[0].name%> <br><%=x[1]%> commits</li>
+        <%end%>        
+      </ul>
+</div>

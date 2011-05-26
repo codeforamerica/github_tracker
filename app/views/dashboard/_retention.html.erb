@@ -1,0 +1,34 @@
+<%
+five_commits = 0
+twenty_commits = 0
+fifty_commits = 0
+@coders_by_commit_size.collect do |x| 
+    five_commits = five_commits + 1 unless x[1] < 5
+    twenty_commits = twenty_commits + 1 unless x[1] < 20
+    fifty_commits = fifty_commits + 1 unless x[1] < 50
+end
+
+@coder_number_projects = @coders.collect { |x| [x.id, x.projects.uniq.size]}.sort_by { |x| x[1]}
+%>  
+
+<div class="box"> 
+  <h2><strong>3</strong> Retention</h2> 
+  <ul id="menu-cfa_fellows" class="menu">
+    <li class="percentage"><strong><%=number_to_percentage(five_commits.to_f/@coders.size.to_f*100, :precision => 2)%></strong><br>
+    % of coders with >5 commits
+    </li>
+    <li class="percentage"><strong><%=number_to_percentage(twenty_commits.to_f/@coders.size.to_f*100, :precision => 2)%></strong><br>
+    % of coders with >20 commits
+    </li>
+    <li class="percentage"><strong><%=number_to_percentage(fifty_commits.to_f/@coders.size.to_f*100, :precision => 2)%></strong><br>
+    % of coders with >50 commits
+    </li>        
+    <li class="percentage"><strong><%=number_to_percentage(@coder_number_projects.delete_if {|x| x[1] < 2}.size.to_f/@coders.size.to_f*100, :precision => 2)%></strong><br>
+    % of coders who commit to >1 projects
+    </li>        
+
+    <h4>Retention measures the number of coders who commit more than once and to more than one project.</h4>
+
+
+  </ul>
+</div>

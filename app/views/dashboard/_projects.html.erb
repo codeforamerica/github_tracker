@@ -1,0 +1,12 @@
+<div class="box"> 
+  <h2><%=@projects.size%> Projects Stats</h2> 
+    <div id="projects_chart_div"></div>
+      <ul id="menu-cfa_get_involved" class="menu">
+        <% freq = @projects.map(&:language).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+          freq.sort_by { |v| freq[v] }.each do |project|%>
+          <% if project[0]!=nil%>
+          <li><a href="/dashboard/projects"><%=project[1]%> <%=project[0]%> projects</a></li> 
+          <% end %>
+        <% end %>
+      </ul>
+</div> 

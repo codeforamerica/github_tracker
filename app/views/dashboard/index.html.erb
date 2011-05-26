@@ -72,79 +72,38 @@
     </ul>
 	</div>
 </div>
-	    <div class="wrap-t"> 
-			<div class="wrap clearfix" id="become-wrap"> 
-			<!--Become a Fellow --> 
-<div class="box"> 
-	<h2><strong>1</strong> Our GitHub Stats</h2> 
 
-          <ul id="menu-cfa_fellows" class="menu">
-            <li><a href="http://www.codeforamerica.org/fellows">20 Fellows</a></li> 
-            <li><a href="/dashboard/coders"><%=@coders.size%> Coders</a></li>
-            <li><a href="/dashboard/projects"><%=@projects.size%> Projects</a></li>
-            <li><a href="/dashboard/commits"><%=@commits.size%> Commits</a></li>
-            <li><a href="/dashboard/projects"><%=@projects.sum(&:watchers)%> Watchers</a></li>            
-            <li><a href="/dashboard/projects"><%=@projects.sum(&:size)/1024%> MB</a></li>                        
-            <li><a href="/dashboard/projects"><%=@projects.sum(&:forks)%> Forks</a></li>                                    
-            <li><a href="/dashboard/projects"><%=@projects.sum(&:open_issues)%> Open Issues</a></li>                                                
-            <li><a href="/dashboard/commits">Started <%=@org.created_at.strftime("%m-%d-%y")%></a></li>
-          </ul>
-        </div> 
-		
-<!--Become a City --> 
-<div class="box"> 
-	<h2><strong>2</strong> <%=@coders.size%> Coders </h2>
-<div id="coders_chart_div"></div>	 
-	<ul id="menu-cfa_city" class="menu">
-    <%@coders_by_commit_size[0..10].each do |x|%>
-    <li><a href="http://www.github.com/<%=x[0].login%>"><%=x[0].login%> <br><%=x[1]%> commits</li>
-    <%end%>
-  </ul>
-  </div> 
-
-	<!--Get Involved --> 
-	<div class="box"> 
-<h2><strong>3</strong><%=@projects.size%> Projects</h2> 
-<div id="projects_chart_div"></div>
-<ul id="menu-cfa_get_involved" class="menu">
-  <% freq = @projects.map(&:language).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-    freq.sort_by { |v| freq[v] }.each do |project|%>
-    <% if project[0]!=nil%>
-    <li><a href="/dashboard/projects"><%=project[1]%> <%=project[0]%> projects</a></li> 
-    <% end %>
-  <% end %>
-  
-            </ul>
-          </div> 
-<!--Support CfA --> 
-<div class="box"> 
-  <h2><strong>4</strong><%=@commits.size%> Commits</h2>
-    <div id="commits_chart_div"></div> 
-      <ul id="menu-cfa_support" class="menu">
-        <%@projects_by_commit_size[0..10].each do |x|%>
-        <li><a href="<%=x[0].url%>"><%=x[0].name%> <br><%=x[1]%> commits</li>
-        <%end%>
-        
-      </ul>
-    </div> 
-    </div> 
-		</div> 
+<div class="wrap-t"> 
+  <div class="wrap clearfix" id="become-wrap"> 
+        <!--Stats --> 
+        <%= render "acquisition"%>
+        <!--Coders --> 
+        <%= render "activation"%>
+        <!--Projects --> 
+        <%= render "retention"%>          
+        <!--Commits --> 
+        <%= render "referral"%>
+      </div> 
 		<div class="wrap-b">&nbsp;</div> 
 		<div class="wrap clearfix" id="whos"> 
 		</div> 
-		<div class="wrap-t"> 
-			<div class="wrap clearfix"> 
-			<!--Helping Cities Solve Common Issues --> 
-<div id="cities-issues"> 
-</div> 
-<!--CfA Blog --> 
-<div id="cfa-blog"> 
-</div> 
-<!--Tweets --> 
-			<div id="cfa-blog">
-</div> 
-			</div> 
+</div>
+
+<div class="wrap-t"> 
+  <div class="wrap clearfix" id="become-wrap"> 
+        <!--Stats --> 
+        <%= render "github_stats"%>
+        <!--Coders --> 
+        <%= render "coders"%>
+        <!--Projects --> 
+        <%= render "projects"%>          
+        <!--Commits --> 
+        <%= render "commits"%>
+      </div> 
+		<div class="wrap-b">&nbsp;</div> 
+		<div class="wrap clearfix" id="whos"> 
 		</div> 
+</div> 
 		
 		
  

@@ -1,0 +1,9 @@
+<div class="box"> 
+  <h2><%=@coders.size%> Coders </h2>
+  <div id="coders_chart_div"></div>	 
+  <ul id="menu-cfa_city" class="menu">
+    <%@coders_by_commit_size[0..10].each do |x|%>
+    <li><a href="http://www.github.com/<%=x[0].login%>"><%=x[0].login%> <br><%=x[1]%> commits</li>
+    <%end%>
+  </ul>
+</div>

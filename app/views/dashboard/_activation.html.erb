@@ -1,0 +1,18 @@
+<div class="box"> 
+  <h2><strong>2</strong> Activation</h2> 
+  <ul id="menu-cfa_fellows" class="menu">
+    <li class="percentage"><strong><%=number_to_percentage(@coders.size.to_f/@projects.sum(&:watchers).to_f*100, :precision => 2)%></strong><br>
+    % of watchers who have become coders
+    </li>
+    <li class="percentage"><strong><%=@coders.size%></strong><br>
+    Number of coders
+    </li>
+    <li class="percentage"><%= image_tag("up_arrow.png")%><strong><%=number_to_percentage(@coders.select { |x| x.first_commit < 90.days.ago}.size.to_f/@coders.size.to_f*100, :precision => 2)%></strong><br>
+    Coder growth past 90 days
+    </li>
+    <li class="percentage"><%= image_tag("up_arrow.png")%><strong><%=number_to_percentage(@projects.select { |x| x.created_at < 90.days.ago}.size.to_f/@projects.size.to_f*100, :precision => 2)%></strong><br>
+    Project growth past 90 days
+    </li>    
+    <h4>Activation measures the number of coders who commit to one of our projects.</h4>
+  </ul>
+</div>
