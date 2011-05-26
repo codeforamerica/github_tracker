@@ -1,6 +1,9 @@
 <div class="box"> 
   <h2><strong>1</strong> Acquisition</h2> 
   <ul id="menu-cfa_fellows" class="menu">
+    <li class="percentage"><strong><%=@visits.size%></strong><br>
+    Number of Visits (started <%=Counter.first.created_at.strftime("%m-%d-%y")%>)
+    </li>
     <li class="percentage"><strong><%=@projects.sum(&:watchers)%></strong><br>
     Number of watchers
     </li>

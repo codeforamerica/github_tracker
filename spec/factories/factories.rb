@@ -46,6 +46,10 @@ Factory.sequence :sha do |n|
   "sha#{n}" 
 end
 
+Factory.define :counter do |f|
+  f.project {Factory(:project)}
+end  
+
 Factory.define :commit do |f|
   f.project {Factory(:project)}
   f.coder {Factory(:coder)}

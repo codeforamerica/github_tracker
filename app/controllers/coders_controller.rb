@@ -29,9 +29,14 @@ class CodersController < ApplicationController
       org = Org.where(:name => params[:organization]).first
     end
     
-    @conditions << "org_id = '#{org.id}'" unless org.nil?     
+    if params[:project_name]
+      project = Project.where(:name => params[:project_name]).first
+    end
     
-    @coder = Coder.where(@conditions.join(" and ")).paginate(
+    @conditions << "commits.org_id = '#{org.id}'" unless org.nil?     
+    @conditions << "commits.project_id = '#{project.id}'" unless project.nil?         
+    
+    @coder = Coder.includes(:commits).where(@conditions.join(" and ")).paginate(
       :per_page => 25, :page => params[:page])
       
     @items = [:results => @coder.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @coder.total_entries]    

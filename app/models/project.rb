@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :name
   has_many :commits 
   has_many :coders, :through => :commits
+  has_many :counters
   belongs_to :org    
 
   

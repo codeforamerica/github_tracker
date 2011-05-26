@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526000533) do
+ActiveRecord::Schema.define(:version => 20110526215404) do
 
   create_table "coders", :force => true do |t|
     t.integer   "org_id"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20110526000533) do
   add_index "commits", ["org_id"], :name => "index_commits_on_org_id"
   add_index "commits", ["project_id"], :name => "index_commits_on_project_id"
   add_index "commits", ["sha"], :name => "index_commits_on_sha"
+
+  create_table "counters", :force => true do |t|
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "counters", ["project_id"], :name => "index_counters_on_project_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer   "priority",   :default => 0

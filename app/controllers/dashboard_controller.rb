@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
     @commits = Commit.all(:include => [:coder, :project])
     @coders = Coder.all(:order => "first_commit ASC",:include => [:projects, :commits])
     @coders_by_commit_size = @coders.collect { |x| [x, x.commits.size]}.sort_by {|x| x[1]}.reverse    
+    @visits = Counter.all(:order => "created_at DESC")
   end
   
 end
