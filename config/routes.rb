@@ -1,7 +1,7 @@
 GithubTracker::Application.routes.draw do
   get "counter/index"
 
-  match ':name.png' => 'counter#index'
+  match ':organization/:name.png' => 'counter#index'
   
   match 'dashboard' => 'dashboard#index'
   match 'organizations' => 'organizations#index'
