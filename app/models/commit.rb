@@ -2,6 +2,7 @@ class Commit < ActiveRecord::Base
   belongs_to :project
   belongs_to :coder
   belongs_to :org  
+  default_scope :order => 'committed_date DESC'
   
   validates_uniqueness_of :sha
   
