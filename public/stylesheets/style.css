@@ -5,7 +5,6 @@ at http://www.vhg-design.com
 ===============
 */
 html, body{
-  background: #FFFFFF url(/images/bg.gif) 0 0 repeat-x;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -136,8 +135,8 @@ text-align: center;}
  padding-top: 27px;
 }
 #header a#logo {
-  width: 168px;
-  height: 68px;
+  width: 150px;
+  height: 86px;
   float: left;
   background: url(/images/logo.png) 0 0 no-repeat;
   margin-top: 3px;
@@ -197,7 +196,6 @@ text-shadow: #999 1px 1px 1px;
   clear: both;
   padding-top: 18px;
   height: 64px;
-  background: url(/images/nav-bg.gif) 0 100% repeat-x;
 }
 #nav {
   position: relative;
