@@ -11,6 +11,18 @@ html, body{
   font-size: 62.5%;
 }
 
+#github_ribbon {
+position: absolute;
+top: 0;
+right: 0;
+display: block;
+width: 149px;
+height: 150px;
+background: url(/images/github-ribbon.png) no-repeat;
+text-indent: -999px;
+overflow: hidden;
+z-index: 3;}
+
 body {
   color: #666;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

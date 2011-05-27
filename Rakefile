@@ -45,5 +45,6 @@ end
 
 task :cron => :environment do
   Rake::Task['heroku:backup'].invoke
-  Rake::Task['heroku:backup'].invoke  
+  Rake::Task['commits:get'].invoke  
+  Rake::Task['commits:clean'].invoke    
 end
