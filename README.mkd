@@ -29,7 +29,8 @@ Installation
     $ rake commits:clean
 
 To use the image loader feature, include the following in your README.md file, and change the logo.png file:
-"[![Your Org Name Tracker](http://yourdomainname/yourorgname/yourprojectname.png)](http://yourdomainname/yourorgname/yourprojectname)"
+
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/github_tracker.png)](http://stats.codeforamerica.org/projects/github_tracker)
 
 Contributing
 ------------
@@ -73,4 +74,4 @@ Copyright
 Copyright (c) 2011 Code for America Laboratories
 See [LICENSE](https://github.com/codeforamerica/github_tracker/blob/master/LICENSE.mkd) for details.
 
-[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/github_tracker.png)](http://stats.codeforamerica.org/projects/github_tracker)
+
