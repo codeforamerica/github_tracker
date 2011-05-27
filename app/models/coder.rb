@@ -33,9 +33,5 @@ class Coder < ActiveRecord::Base
     !coder.blank? ? coder : self.get_details(name)
   end
   
-  # cleans up coders with no commits
-  def clean
-    Coder.all.each { |x| if x.commits.blank? then x.delete end}    
-  end
 
 end

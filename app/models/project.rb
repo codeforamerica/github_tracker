@@ -85,10 +85,4 @@ class Project < ActiveRecord::Base
     
   end
   
-  # cleans up projects with no commits
-  def clean
-    Project.all.each { |x| if x.commits.blank? then x.delete end}    
-  end  
-
-  
 end

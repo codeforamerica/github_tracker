@@ -35,8 +35,8 @@ namespace :commits do
   desc "Cleanup coder straggler"
   task :clean => :environment do
     begin
-      Coder.new.delay.clean
-      Project.new.delay.clean      
+      CronProcess.new.delay.clean_coders
+      CronProcess.new.delay.clean_projects      
     end
   end
 end
