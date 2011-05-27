@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  layout "application"
 
   # returns projects in json based upon certain paramters
   #
@@ -19,7 +20,7 @@ class ProjectsController < ApplicationController
   # @example /codeforamerica/shortstack.json
 
   def index
-  
+    
     conditions(Project)
     
     if params[:organization]
@@ -28,12 +29,13 @@ class ProjectsController < ApplicationController
     
     @conditions << "org_id = org.id" unless org.nil? 
 
-    @project = Project.where(@conditions.join(" and ")).paginate(
-      :per_page => 25, :page => params[:page])
+    @projects = Project.includes(:commits, :coders).where(@conditions.join(" and "))
+    @coders = Coder.all
     
-    @items = [:results => @project.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @project.total_entries]  
+    @items = [:results => @projects.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @projects.size]  
     respond_to do |format|
-      format.json { render :json => [@items, @project].to_json}      
+      format.json { render :json => [@items, @projects].to_json}
+      format.html
     end
   end
   

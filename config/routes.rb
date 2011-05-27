@@ -2,6 +2,7 @@ GithubTracker::Application.routes.draw do
   get "counter/index"
 
   match ':organization/:name.png' => 'counter#index'
+  match ':organization/projects' => 'projects#index'    
   
   match 'dashboard' => 'dashboard#index'
   match 'organizations' => 'organizations#index'
@@ -19,8 +20,7 @@ GithubTracker::Application.routes.draw do
   match 'coders/:coder_login/commits' => 'commits#index', :format => :get
   match 'coders/:login' => 'coders#index', :format => :get  
   match 'coders/:login/projects' => 'coders#projects', :format => :get  
-  match 'projects/:name/commits' => 'commits#index', :format => :get  
-  
+  match 'projects/:name/commits' => 'commits#index', :format => :get    
 
   root :to => 'dashboard#index'
 

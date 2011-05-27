@@ -11,7 +11,7 @@ describe ProjectsController do
      it "should return all projects from json call" do
          get 'index', :format => :json
          response.should be_success
-         assigns(:project).size.should == 2
+         assigns(:projects).size.should == 2
        end
        
        it "should return one project when passed a project name from json call" do
@@ -19,7 +19,7 @@ describe ProjectsController do
          Project.count.should > 1
          get "index", :name => project.name, :format => :json
          response.should be_success
-         assigns(:project).size.should == 1
+         assigns(:projects).size.should == 1
          ActiveSupport::JSON.decode(response.body)[1].should == [ActiveSupport::JSON.decode(project.to_json)]
        end
          
@@ -29,15 +29,15 @@ describe ProjectsController do
        
          get "index", "watchers>" => 2, :format => :json
          response.should be_success
-         assigns(:project).size.should == 2
+         assigns(:projects).size.should == 2
        
          get "index", "watchers<" => 2, :format => :json
          response.should be_success
-         assigns(:project).size.should == 1
+         assigns(:projects).size.should == 1
          
          get "index", "watchers" => 1, :format => :json
          response.should be_success
-         assigns(:project).size.should == 1
+         assigns(:projects).size.should == 1
          
        end
       
@@ -47,15 +47,15 @@ describe ProjectsController do
               
         get "index", "created_at>" => Time.now - 1.month, :format => :json
         response.should be_success
-        assigns(:project).size.should == 2
+        assigns(:projects).size.should == 2
             
         get "index", "created_at<" => Time.now - 1.month, :format => :json
         response.should be_success
-        assigns(:project).size.should == 1
+        assigns(:projects).size.should == 1
         
         get "index", "created_at>" => Time.now - 1.year, "created_at<" => Time.now - 1.month, :format => :json
         response.should be_success
-        assigns(:project).size.should == 1
+        assigns(:projects).size.should == 1
         
       end
       
@@ -64,11 +64,11 @@ describe ProjectsController do
         
         get "index", "fork" => 't', :format => :json
         response.should be_success
-        assigns(:project).size.should == 1
+        assigns(:projects).size.should == 1
         
         get "index", "fork" => 'f', :format => :json
         response.should be_success
-        assigns(:project).size.should == 2
+        assigns(:projects).size.should == 2
         
       end
     
@@ -76,11 +76,11 @@ describe ProjectsController do
       project = Factory(:project, :size => 1)
       get "index", "size>" => 2, :format => :json
       response.should be_success
-      assigns(:project).size.should == 2
+      assigns(:projects).size.should == 2
       
       get "index", "size<" => 2, :format => :json
       response.should be_success
-      assigns(:project).size.should == 1
+      assigns(:projects).size.should == 1
     end
     
     it "should return projects with > < open issues" do
@@ -89,11 +89,11 @@ describe ProjectsController do
       
       get "index", "open_issues>" => 1, :format => :json
       response.should be_success
-      assigns(:project).size.should == 1
+      assigns(:projects).size.should == 1
       
       get "index", "open_issues<" => 5, :format => :json
       response.should be_success
-      assigns(:project).size.should == 2
+      assigns(:projects).size.should == 2
     end
     
     after do

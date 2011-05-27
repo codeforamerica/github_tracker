@@ -1,0 +1,138 @@
+<% g = []
+@coders.each { |x| g[x.id] = x.login} %>
+<% content_for :header do%>
+  <%= javascript_include_tag "jquery.tablesorter.min.js" %>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart","treemap" ]});
+    google.setOnLoadCallback(drawChart);
+    function chart_object(data, div_name, chart_title) {
+      var pie_chart = new google.visualization.PieChart(document.getElementById(div_name));
+      pie_chart.draw(data, {width: 450, height: 300, title: chart_title});
+    }
+    
+    function tree_object(data, div_id) {
+      var tree = new google.visualization.TreeMap(document.getElementById(div_id));
+      tree.draw(data, {
+        minColor: '#029bfc',
+        midColor: '#02f3fc',
+        maxColor: '#0206fc',
+        headerHeight: 15,
+        fontColor: 'black',
+        showScale: true});
+    }
+    
+    function line_object(data,div_name, chart_title) {
+      var line_chart = new google.visualization.ColumnChart(document.getElementById(div_name));
+      line_chart.draw(data, {width: 400, height: 300, legend: 'none', gridlineColor: 'none',
+                        chartArea:{left:0,top:0,width:"90%",height:"90%"},
+                        hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
+                        pointSize: 5, title: chart_title
+                       });
+    }
+    
+    function drawChart() {
+      
+      var project_data= new google.visualization.DataTable();
+      project_data.addColumn('string', 'year');
+      project_data.addColumn('number', 'projects');
+      project_data.addRows(
+        <%= raw(@projects.collect { |x| [x.created_at.strftime("%b %Y"), x]}.group_by { |x| x[0] }.collect {|x| [x[0], x[1].size]})%>
+      );
+      
+      var language_chart_data = new google.visualization.DataTable();
+      language_chart_data.addColumn('string', 'Name');
+      language_chart_data.addColumn('number', 'Total');
+      <% freq = @projects.group_by(&:language).map {|key,arr| [key || "Unknown",arr.length]} %>
+        language_chart_data.addRows(<%=freq.size%>); 
+      <% freq.each_with_index do |(language, usage), index|%>
+        language_chart_data.setValue(<%=index%>, 0, '<%=language%>');
+        language_chart_data.setValue(<%=index%>, 1, <%=usage%>);        
+      <% end %>      
+          
+      var commit_data = new google.visualization.DataTable();
+      commit_data.addColumn('string', 'Coder');
+      commit_data.addColumn('string', 'Project');
+      commit_data.addColumn('number', 'Commits');
+      commit_data.addRows([
+        ["Projects by Commits",null,0],
+        
+        <%@projects.each do |project|%>
+        ["<%=project.name%>","Projects by Commits",<%=project.commits.size%>],
+        <% project.commits.group_by(&:coder_id).map {|key,arr| [key,arr.length]}.each do |coder|%>
+          ["<%=g[coder[0]]%>_<%=project.id%>","<%=project.name%>",<%=coder[1]%>],
+        <% end %>
+        <%end%>
+        ["blank","all",0]
+      ]);
+      
+      tree_object(commit_data, "commit_tree");
+      line_object(project_data, "project_chart_div", "New Projects by Month");
+      chart_object(language_chart_data, 'language_chart', "Projects by Languages");
+      
+    }
+  </script>
+  
+  <script type="text/javascript">
+  $(document).ready(function() 
+      { 
+          $("#myTable").tablesorter(); 
+      } 
+  );
+  
+  </script>
+<% end %>
+  <div class="wrap clearfix" id="become-wrap">
+    <h1>Projects</h1>
+    <div id="main_column">
+      <div id="line_charts" class="bigger_box">
+        <h2>New Projects by Month<h2>
+        <div id="project_chart_div"></div>
+      </div>
+      <div id ="pie_charts" class="medium_box">
+        <h2>Number of Projects by Language<h2>
+        <div id="language_chart"></div> 
+      </div>     
+    </div>
+        
+  <div class="clearfix"></div>
+    <h1>Projects by Commits</h1>
+    <span>Left click to drill down, right click to move back.
+    <div id="commit_tree" style="width: 940px; height: 400px;"></div>  
+  </div>  
+
+<div class="wrap-t"> 
+  <div class="wrap clearfix" id="become-wrap">
+    <h1>Project Details</h1>
+    <table id="myTable" class="tablesorter"> 
+    <thead> 
+    <tr> 
+        <th>Project Name</th> 
+        <th>Language</th>
+        <th>Issues</th>
+        <th>Started</th>
+        <th>Watchers</th>
+        <th>Fork?</th>
+        <th>Forks</th> 
+        <th>Commits</th> 
+        <th>Coders</th> 
+    </tr> 
+    </thead> 
+    <tbody> 
+      <% @projects.each do |project|%>
+    <tr> 
+        <td><%=project.name%></td> 
+        <td><%=project.language%></td> 
+        <td><%=project.open_issues%></td> 
+        <td><%=project.created_at.strftime("%y-%m-%d")%></td> 
+        <td><%=project.watchers%></td>
+        <td><%=project.fork?%></td> 
+        <td><%=project.forks%></td> 
+        <td><%=project.commits.size%></td> 
+        <td><%=project.coders.uniq.size%></td> 
+    </tr> 
+    <%end%>
+    </tbody> 
+    </table>
+  </div>
+</div>    
