@@ -9,7 +9,28 @@ Add it to the [apps](http://github.com/codeforamerica/github_tracker/wiki/apps) 
 
 Installation
 ------------
-    $ [sudo] 
+    # Install the app
+    $ bundle install
+    $ rake db:migrate
+
+    # Add an organization
+    $ rails c
+    irb>Org.new.get_details('codeforamerica')
+    irb>Org.last.get_projects
+    irb>exit
+
+    # Queue up jobs
+    $ rake commits:get 
+
+    # Start Worker
+    $ rake jobs:work
+
+    # Upon completion, get rid of stray projects or coders
+    $ rake commits:clean
+
+To use the image loader feature, include the following in your README.md file, and change the logo.png file:
+
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/github_tracker.png)](http://stats.codeforamerica.org/projects/github_tracker)
 
 Contributing
 ------------
@@ -53,4 +74,4 @@ Copyright
 Copyright (c) 2011 Code for America Laboratories
 See [LICENSE](https://github.com/codeforamerica/github_tracker/blob/master/LICENSE.mkd) for details.
 
-[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/github_tracker.png)](http://stats.codeforamerica.org/projects/github_tracker)
+
