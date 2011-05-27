@@ -96,6 +96,9 @@ GEM
     rake (0.8.7)
     rash (0.3.0)
       hashie (~> 1.0.0)
+    right_aws (2.1.0)
+      right_http_connection (>= 1.2.5)
+    right_http_connection (1.3.0)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -137,6 +140,7 @@ DEPENDENCIES
   mocha
   octokit
   rails (= 3.0.7)
+  right_aws
   rspec-rails
   simplecov
   spork (~> 0.9.0.rc)

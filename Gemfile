@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'octokit'
 gem 'domainatrix'
 gem 'will_paginate'
+gem 'right_aws'
 
 group :test do
   gem 'factory_girl_rails'
