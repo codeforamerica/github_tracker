@@ -27,7 +27,11 @@ class ProjectsController < ApplicationController
       org = Org.where(:name => params[:organization]).first
     end
     
-    @conditions << "org_id = org.id" unless org.nil? 
+    if params[:project_name]
+      @conditions << "projects.name = #{params[:project_name]}" unless org.nil? 
+    end
+    
+    @conditions << "orgs.org_id = #{org.id}" unless org.nil? 
 
     @projects = Project.includes(:commits, :coders).where(@conditions.join(" and "))
     @coders = Coder.all
@@ -38,6 +42,6 @@ class ProjectsController < ApplicationController
       format.html
     end
   end
-  
+    
 
 end

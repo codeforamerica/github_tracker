@@ -1,0 +1,93 @@
+<% g = []
+@coders.each { |x| g[x.id] = x.login} %>
+<% content_for :header do%>
+  <%= javascript_include_tag "jquery.tablesorter.min.js" %>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart","treemap" ]});
+    google.setOnLoadCallback(drawChart);
+    function chart_object(data, div_name, chart_title) {
+      var pie_chart = new google.visualization.PieChart(document.getElementById(div_name));
+      pie_chart.draw(data, {width: 450, height: 300, title: chart_title});
+    }
+    
+    function tree_object(data, div_id) {
+      var tree = new google.visualization.TreeMap(document.getElementById(div_id));
+      tree.draw(data, {
+        minColor: '#029bfc',
+        midColor: '#02f3fc',
+        maxColor: '#0206fc',
+        headerHeight: 15,
+        fontColor: 'black',
+        showScale: true});
+    }
+    
+    function line_object(data,div_name, chart_title) {
+      var line_chart = new google.visualization.ColumnChart(document.getElementById(div_name));
+      line_chart.draw(data, {width: 400, height: 300, legend: 'none', gridlineColor: 'none',
+                        chartArea:{left:0,top:0,width:"90%",height:"90%"},
+                        hAxis: {titleTextStyle: {color: '#FF0000', size: 10}},
+                        pointSize: 5, title: chart_title
+                       });
+    }
+    
+    function drawChart() {
+      
+    
+      var coder_data= new google.visualization.DataTable();
+      coder_data.addColumn('string', 'year');
+      coder_data.addColumn('number', 'coders');
+      coder_data.addRows(
+        <%= raw(@coders.collect { |x| [x.first_commit.strftime("%b %Y"), x]}.group_by { |x| x[0] }.collect {|x| [x[0], x[1].size]})%>
+      );
+      
+      // tree_object(commit_data, "commit_tree");
+      line_object(project_data, "coder_chart_div", "New Projects by Month");
+      // chart_object(language_chart_data, 'language_chart', "Projects by Languages");
+      
+    }
+  </script>
+  
+  <script type="text/javascript">
+  $(document).ready(function() 
+      { 
+          $("#myTable").tablesorter(); 
+      } 
+  );
+  
+  </script>
+<% end %>
+
+<div class="wrap-t"> 
+  <div class="wrap clearfix" id="become-wrap">
+    <h1>Coder Details</h1>
+    <table id="myTable" class="tablesorter"> 
+    <thead> 
+    <tr> 
+        <th>Coder</th> 
+        <th>Location</th>
+        <th>Projects</th>
+        <th>Commits</th>
+        <th>Followers</th>
+        <th>Following</th>
+        <th>Repo Count</th> 
+        <th>Blog</th> 
+    </tr> 
+    </thead> 
+    <tbody> 
+      <% @coders.each do |coder|%>
+    <tr> 
+        <td><%=coder.login%></td> 
+        <td><%=coder.location%></td> 
+        <td><%=coder.projects.uniq.size%></td> 
+        <td><%=coder.commits.size%></td>         
+        <td><%=coder.followers_count%></td>         
+        <td><%=coder.following_count%></td>
+        <td><%=coder.public_repo_count%></td>          
+        <td> <% if coder.blog?%><%=link_to "Blog", coder.blog%><%end%></td>
+    </tr> 
+    <%end%>
+    </tbody> 
+    </table>
+  </div>
+</div>

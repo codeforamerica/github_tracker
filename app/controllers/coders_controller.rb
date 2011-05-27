@@ -36,13 +36,13 @@ class CodersController < ApplicationController
     @conditions << "commits.org_id = '#{org.id}'" unless org.nil?     
     @conditions << "commits.project_id = '#{project.id}'" unless project.nil?         
     
-    @coder = Coder.includes(:commits).where(@conditions.join(" and ")).paginate(
-      :per_page => 25, :page => params[:page])
+    @coders = Coder.includes(:commits).where(@conditions.join(" and "))
       
-    @items = [:results => @coder.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @coder.total_entries]    
+    @items = [:results => @coders.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @coders.size]    
     
     respond_to do |format|
-      format.json { render :json => [@items, @coder].to_json}      
+      format.json { render :json => [@items, @coders].to_json}    
+      format.html  
     end
   end
   

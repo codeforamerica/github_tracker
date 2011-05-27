@@ -11,7 +11,7 @@ describe CodersController do
     it "should return all coders from json call" do
       get 'index', :format => :json
       response.should be_success
-      assigns(:coder).size.should == 2
+      assigns(:coders).size.should == 2
     end
     
     it "should return one coder when passed login from json call" do
@@ -19,7 +19,7 @@ describe CodersController do
       Coder.count.should > 1
       get "index", :login => coder.login, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       ActiveSupport::JSON.decode(response.body)[1].should == [ActiveSupport::JSON.decode(coder.to_json)]
     end
     
@@ -28,15 +28,15 @@ describe CodersController do
     
       get "index", "followers_count>" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 2
+      assigns(:coders).size.should == 2
     
       get "index", "followers_count<" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
       get "index", "followers_count" => 1, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
     end
     
@@ -46,15 +46,15 @@ describe CodersController do
     
       get "index", "following_count>" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 2
+      assigns(:coders).size.should == 2
     
       get "index", "following_count<" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
       get "index", "following_count" => 1, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
     end
     
@@ -64,15 +64,15 @@ describe CodersController do
     
       get "index", "public_repo_count>" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 2
+      assigns(:coders).size.should == 2
     
       get "index", "public_repo_count<" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
       get "index", "public_repo_count" => 1, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
     end
     
@@ -82,15 +82,15 @@ describe CodersController do
     
       get "index", "public_gist_count>" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 2
+      assigns(:coders).size.should == 2
     
       get "index", "public_gist_count<" => 2, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
       get "index", "public_gist_count" => 1, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
     end
     
@@ -100,15 +100,15 @@ describe CodersController do
             
       get "index", "created_at>" => Time.now - 1.month, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 2
+      assigns(:coders).size.should == 2
 
       get "index", "created_at<" => Time.now - 1.month, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
       get "index", "created_at>" => Time.now - 1.year, "created_at<" => Time.now - 1.month, :format => :json
       response.should be_success
-      assigns(:coder).size.should == 1
+      assigns(:coders).size.should == 1
       
     end
         

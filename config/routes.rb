@@ -22,6 +22,7 @@ GithubTracker::Application.routes.draw do
   match 'coders/:login/projects' => 'coders#projects', :format => :get  
   match 'projects/:name/commits' => 'commits#index', :format => :get    
 
+  match ':organization/:project_name' => 'projects#show' 
   root :to => 'dashboard#index'
 
 end
