@@ -61,6 +61,9 @@ class Project < ActiveRecord::Base
         coder = Coder.new.find_or_create(commit.author.login)
         options = {:sha => commit.id, :project_id => self.id, :org_id => self.org.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date}
         Commit.new.find_or_create(options)    
+        if coder.reload.first_commit.nil?
+          coder.update_attributes(:first_commit => coder.commits.last.committed_date)
+        end
       end      
     rescue 
       return false, "No commits here!"
@@ -81,6 +84,11 @@ class Project < ActiveRecord::Base
     end
     
   end
+  
+  # cleans up projects with no commits
+  def clean
+    Project.all.each { |x| if x.commits.blank? then x.delete end}    
+  end  
 
   
 end

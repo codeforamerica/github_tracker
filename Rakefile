@@ -24,6 +24,26 @@ namespace :heroku do
   end
 end
 
+namespace :commits do
+  desc "Grab new commits for projects"
+  task :get => :environment do
+    begin
+      Project.all.each { |x| x.delay.get_commit_history(1)}
+    end
+  end
+  
+  desc "Cleanup coder straggler"
+  task :clean => :environment do
+    begin
+      Coder.new.delay.clean
+      Project.new.delay.clean      
+    end
+  end
+end
+
+
+
 task :cron => :environment do
   Rake::Task['heroku:backup'].invoke
+  Rake::Task['heroku:backup'].invoke  
 end
