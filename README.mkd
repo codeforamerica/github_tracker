@@ -11,10 +11,6 @@ Installation
 ------------
     $ [sudo] 
 
-Tracking
-----------------------
-[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/github_tracker.png)](http://stats.codeforamerica.org/projects/github_tracker)
-  
 Contributing
 ------------
 In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.
@@ -56,3 +52,5 @@ Copyright
 ---------
 Copyright (c) 2011 Code for America Laboratories
 See [LICENSE](https://github.com/codeforamerica/github_tracker/blob/master/LICENSE.mkd) for details.
+
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/github_tracker.png)](http://stats.codeforamerica.org/projects/github_tracker)
