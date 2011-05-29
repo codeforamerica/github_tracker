@@ -57,6 +57,16 @@ describe Project do
     repo.reload.commits.size.should == 2
   end
   
+  it "should add commits, even for 'non-existant' coders (coders who pushed to github without including a github username, and so can't [neccessarily] be linked to a github account)" do
+    stub_request(:get, "https://github.com/api/v2/json/commits/list/codeforamerica/shortstack/master?page=1").
+            with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+       to_return(:status => 200, :body => fixture("unlinked_commits.json"), :headers => {})
+    Project.new.get_details("https://github.com/codeforamerica/shortstack")
+    repo = Project.last
+    repo.get_commits(1)
+    repo.commits.size.should == 3
+  end
+  
   after do
     Org.delete_all
     Project.delete_all
