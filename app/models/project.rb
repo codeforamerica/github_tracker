@@ -59,9 +59,10 @@ class Project < ActiveRecord::Base
       c = Octokit.commits(repo_name.join, "master", {:page => page})
       c.each do |commit|
         coder = Coder.new.find_or_create(commit.author.login)
-        options = {:sha => commit.id, :project_id => self.id, :org_id => self.org.id, :branch => branch, :message => commit.message, :coder_id => coder.id, :committed_date => commit.committed_date}
+        coder_exists = coder.is_a? Coder #if we've been given back something other than a coder because we couldn't find a user, this will be false
+        options = {:sha => commit.id, :project_id => self.id, :org_id => self.org.id, :branch => branch, :message => commit.message, :coder_id => coder_exists ? coder.id : nil, :committed_date => commit.committed_date}
         Commit.new.find_or_create(options)    
-        if coder.reload.first_commit.nil?
+        if coder_exists && coder.reload.first_commit.nil?
           coder.update_attributes(:first_commit => coder.commits.last.committed_date)
         end
       end      
