@@ -5,6 +5,7 @@ describe ProjectsController do
   describe "GET 'index'" do
     
     before do
+      Project.delete_all
       2.times {Factory(:project)}
     end
       

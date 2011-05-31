@@ -18,6 +18,9 @@ describe Project do
      stub_request(:get, "https://github.com/api/v2/json/organizations/codeforamerica").
               with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
               to_return(:status => 200, :body => fixture("organization.json"), :headers => {})
+      stub_request(:get, "https://github.com/api/v2/json/repos/show/codeforamerica/shortstacker").
+               with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+               to_return(:status => 200, :body => fixture("repo_update.json"), :headers => {})              
                          
     end
 
@@ -36,6 +39,14 @@ describe Project do
      repo_name = Project.new.get_details("https://github.com/codeforamerica/shortstack")
      repo_name.name.should == "shortstack"
      Project.count.should == 1
+   end
+   
+   it "should update a repo" do
+     org = Factory(:org, :login => "codeforamerica")
+     project = Factory(:project, :name => 'shortstacker', :org => org)
+     project.open_issues.should == 0
+     project.update_details
+     project.reload.open_issues.should == 15
    end
    
    it "should return error when repo not found" do

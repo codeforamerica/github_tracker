@@ -31,6 +31,22 @@ class Project < ActiveRecord::Base
       return false, repo_name
     end
   end
+  
+  # given a github url, goto github and update the project data
+  #
+  # @param repo_url The url of the repo, i.e. "https://githubcom/codeforamerica/fcc_reboot"
+  # @return Project or Error
+  # @example Project.new.get_details("https://github.com/codeforamerica/shortstack")
+  
+  def update_details  
+        repo = Octokit.repo(self.org.login + "/" + self.name)
+      begin
+
+        self.update_attributes(repo)
+      rescue
+        return false, "We had a problem finding that repository"
+      end
+  end  
 
   # given a github url, parse the url and return a string
   #

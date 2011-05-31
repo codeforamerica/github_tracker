@@ -24,6 +24,15 @@ namespace :heroku do
   end
 end
 
+namespace :projects do
+  desc "Update project details"
+  task :update => :environment do
+    begin
+      Project.all.each { |x| x.delay.update_details}
+    end
+  end
+end
+
 namespace :commits do
   desc "Grab new commits for projects"
   task :get => :environment do

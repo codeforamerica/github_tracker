@@ -4,6 +4,7 @@ describe OrganizationsController do
   
   describe "GET 'index'" do
     before do
+      Org.delete_all
       2.times {Factory(:org)}
     end
     
