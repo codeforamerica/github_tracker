@@ -33,8 +33,11 @@ class ProjectsController < ApplicationController
     
     @conditions << "orgs.org_id = #{org.id}" unless org.nil? 
 
-    @projects = Project.includes(:commits, :coders).where(@conditions.join(" and "))
+    @projects = Project.includes(:commits, :coders).where(@conditions.join(" and ")).order("created_at DESC")
     @coders = Coder.all
+    @projects_by_coder_size = @projects.collect { |x| [x, x.coders.uniq.size]}.sort_by {|x| x[1]}.reverse
+    @projects_by_commit_month_size = @projects.collect { |x| [x, x.commits.where("committed_date > '#{1.month.ago}'").size]}.sort_by {|x| x[1]}.reverse        
+    @projects_by_commit_week_size = @projects.collect { |x| [x, x.commits.where("committed_date > '#{1.week.ago}'").size]}.sort_by {|x| x[1]}.reverse            
     
     @items = [:results => @projects.size, :page => (params[:page].nil? ? 1 : params[:page]), :total_items => @projects.size]  
     respond_to do |format|

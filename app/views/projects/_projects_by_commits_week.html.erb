@@ -1,0 +1,11 @@
+<div class="box"> 
+  <h2>Top Projects by Commits This Week</h2> 
+  <ul id="menu-cfa_fellows" class="menu">
+    <% @projects_by_commit_week_size[0..4].each do |project|%>
+    <li><a href="http://www.github.com/codeforamerica/<%=project[0].name%>"><strong><%=project[0].name%></strong><br>
+    <%=project[1]%> commits</a>
+    </li>
+    <%end%>
+    <h4>Top ten projects by commits in the past seven days</h4>
+  </ul>
+</div>

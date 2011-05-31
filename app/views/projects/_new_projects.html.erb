@@ -1,0 +1,11 @@
+<div class="box"> 
+  <h2>Most Recent Projects</h2> 
+  <ul id="menu-cfa_fellows" class="menu">
+    <% @projects[0..4].each do |project|%>
+    <li><a href="http://www.github.com/codeforamerica/<%=project.name%>"><strong><%=project.name%></strong><br>
+    Started <%=project.created_at.strftime("%m-%d-%y")%></a>
+    </li>
+    <%end%>
+    <h4>Five most recent projects by start date</h4>
+  </ul>
+</div>
