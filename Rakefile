@@ -24,6 +24,15 @@ namespace :heroku do
   end
 end
 
+namespace :orgs do
+  desc "Update org projects"
+  task :new_projects => :environment do
+    begin
+      Org.all.each { |x| x.delay.get_new_projects}
+    end
+  end
+end
+
 namespace :projects do
   desc "Update project details"
   task :update => :environment do
@@ -54,6 +63,8 @@ end
 
 task :cron => :environment do
   Rake::Task['heroku:backup'].invoke
+  Rake::Task['orgs:new_projects'].invoke
+  Rake::Task['projects:update'].invoke
   Rake::Task['commits:get'].invoke  
   Rake::Task['commits:clean'].invoke    
 end

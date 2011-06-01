@@ -26,7 +26,7 @@ class Org < ActiveRecord::Base
   # goto github and grab the organization projects
   #
   # @return projects or Error
-  # @example Organization.new.get_details("codeforamerica")
+  # @example Organization.first.get_projects
   
   def get_projects
     begin
@@ -43,6 +43,22 @@ class Org < ActiveRecord::Base
       self.projects
     end
   end
+  
+  # goto github, grab the organization projects and add any new projects
+  #
+  # @return projects or Error
+  # @example Organization.first.new_projects
+  
+  def get_new_projects
+    project_list = self.get_projects
+    project_list.each do |project|
+      if Project.where(:name => project.name).blank?
+        self.projects.create!(project)
+      end
+    end
+  end
+  
+  
   
   # given a org name, find and return it or goto github and grab the org details and return a new coder
   #

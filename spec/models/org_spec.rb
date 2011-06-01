@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Org do
   
   before do
+    Org.delete_all
+    Project.delete_all
     stub_request(:get, "https://github.com/api/v2/json/organizations/codeforamerica").
              with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
              to_return(:status => 200, :body => fixture("organization.json"), :headers => {})
@@ -12,7 +14,9 @@ describe Org do
     stub_request(:get, "https://github.com/api/v2/json/organizations/codeforamerica/public_repositories").
              with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
              to_return(:status => 200, :body => fixture("organization_repos.json"), :headers => {})          
-
+     stub_request(:get, "https://github.com/api/v2/json/organizations/codeforamerica2/public_repositories").
+              with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+              to_return(:status => 200, :body => fixture("organization_update_repos.json"), :headers => {})
     end
 
   it "should save an organization" do
@@ -32,9 +36,21 @@ describe Org do
     org.projects.size.should == 1
     org.projects.first.name.should == "shortstack"
   end
+  
+  it "should grab a list of projects, add new ones and not duplicate" do
+    project = Factory(:project, {:name => "shorstack3", :org => Factory(:org, :login => "codeforamerica2")})
+    org = project.org
+    org.projects.size.should == 1
+    org.get_new_projects
+    org.projects.last.name.should == "shortstack1"
+    org.projects.size.should == 2
+    org.get_new_projects
+    org.reload.projects.size.should == 2    
+  end
 
   after do
     Org.delete_all
+    Project.delete_all
   end
   
 end
