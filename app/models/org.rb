@@ -54,6 +54,7 @@ class Org < ActiveRecord::Base
     project_list.each do |project|
       if Project.where(:name => project.name).blank?
         self.projects.create!(project)
+        Project.last.delay.get_commit_history(1)
       end
     end
   end
