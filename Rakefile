@@ -53,8 +53,8 @@ namespace :commits do
   desc "Cleanup coder straggler"
   task :clean => :environment do
     begin
-      CronProcess.new.delay.clean_coders
-      CronProcess.new.delay.clean_projects      
+      CronProcess.new.delay(:run_at => Time.now + 1.hours).clean_coders
+      CronProcess.new.delay(:run_at => Time.now + 1.hours).clean_projects      
     end
   end
 end
