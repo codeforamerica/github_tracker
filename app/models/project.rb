@@ -95,7 +95,7 @@ class Project < ActiveRecord::Base
   def get_commit_history(page=1)
     current_commits_size = self.commits.size
     c = self.get_commits(page)
-    if c[0] == false
+    if c[0] == false 
     else
       self.delay.get_commit_history(page+1)
     end
