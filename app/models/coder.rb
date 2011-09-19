@@ -3,6 +3,7 @@ class Coder < ActiveRecord::Base
   has_many :projects, :through => :commits
   has_many :orgs, :through => :commits    
   validates_uniqueness_of :login
+  default_scope where('first_commit IS NOT NULL')
   
   # given a coder name, goto github and grab the user details and create a new coder
   #
