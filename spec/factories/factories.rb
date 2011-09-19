@@ -2,9 +2,9 @@ Factory.sequence(:login) { |n| "something#{n}" }
 
 
 Factory.define :org do |f|
-  f.name "Code for America"
+  f.name {Faker::Company.name}
   f.created_at Time.now
-  f.location "San Francisco"
+  f.location {Faker::Address.city}
   f.public_repo_count 19
   f.public_gist_count 0
   f.following_count 25

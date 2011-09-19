@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+if RAILS.env != 'production'
+  
+  puts "Creating Org"
+  puts "Creating Projects"
+  puts "Creating Commits"
+end

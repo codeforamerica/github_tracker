@@ -9,6 +9,7 @@ gem 'octokit'
 gem 'domainatrix'
 gem 'will_paginate'
 gem 'right_aws'
+gem "meta_search"
 
 group :test do
   gem 'factory_girl_rails'
@@ -19,4 +20,5 @@ group :test do
   gem 'webmock'
   gem 'yard'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'faker'
 end
