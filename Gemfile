@@ -11,11 +11,14 @@ gem 'will_paginate'
 gem 'right_aws'
 gem "meta_search"
 
+group :development do
+  gem 'ZenTest'
+end
+
 group :test do
   gem 'factory_girl_rails'
   gem 'mocha'
   gem 'rspec-rails'
-  gem 'ZenTest'
   gem 'simplecov'
   gem 'webmock'
   gem 'yard'
