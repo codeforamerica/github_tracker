@@ -9,7 +9,7 @@ Factory.define :org do |f|
   f.public_gist_count 0
   f.following_count 25
   f.followers_count 35
-  f.login { Factory.next(:login) }
+  f.login { Factory.run(:login) }
   f.sequence(:email) { |n| "test#{n}@example.com" }
 end
 
@@ -27,7 +27,7 @@ Factory.define :coder do |f|
 end
 
 Factory.sequence :name do |n|
-  "some_project_name#{n}" 
+  "some_project_name#{n}"
 end
 
 Factory.define :project do |f|
@@ -37,24 +37,24 @@ Factory.define :project do |f|
   f.open_issues 0
   f.created_at Time.now
   f.size 7000
-  f.name {Factory.next(:name)}
-  f.organization {Factory.next(:login)}
+  f.name {Factory.run(:name)}
+  f.organization {Factory.run(:login)}
   f.org {Factory(:org)}
 end
 
 Factory.sequence :sha do |n|
-  "sha#{n}" 
+  "sha#{n}"
 end
 
 Factory.define :counter do |f|
   f.project {Factory(:project)}
-end  
+end
 
 Factory.define :commit do |f|
   f.project {Factory(:project)}
   f.coder {Factory(:coder)}
   f.org {Factory(:org)}
-  f.sha {Factory.next(:sha)}
+  f.sha {Factory.run(:sha)}
   f.branch "master"
   f.message "something funny"
   f.committed_date Time.now
