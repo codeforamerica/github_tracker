@@ -15,13 +15,16 @@ group :development do
   gem 'ZenTest'
 end
 
-group :test do
+group :development, :test do
   gem 'factory_girl_rails'
   gem 'mocha'
   gem 'rspec-rails'
   gem 'simplecov'
-  gem 'webmock'
   gem 'yard'
   gem 'spork', '~> 0.9.0.rc'
   gem 'faker'
+end
+
+group :test do
+  gem 'webmock'
 end
