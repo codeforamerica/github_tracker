@@ -4,12 +4,15 @@ gem 'rails', '3.0.7'
 gem 'delayed_job'
 gem 'jquery-rails'
 gem 'json'
-gem 'sqlite3'
 gem 'octokit'
 gem 'domainatrix'
 gem 'will_paginate'
 gem 'right_aws'
-gem "meta_search"
+gem 'meta_search'
+
+group :production do
+  gem 'pg'
+end
 
 group :development do
   gem 'ZenTest'
@@ -23,6 +26,7 @@ group :development, :test do
   gem 'yard'
   gem 'spork', '~> 0.9.0.rc'
   gem 'faker'
+  gem 'sqlite3'
 end
 
 group :test do
