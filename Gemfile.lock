@@ -48,6 +48,7 @@ GEM
     domainatrix (0.0.10)
       addressable
     erubis (2.7.0)
+    eventmachine (0.12.10)
     execjs (1.3.1)
       multi_json (~> 1.0)
     factory_girl (2.0.0.beta2)
@@ -151,6 +152,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.5)
+    thin (1.3.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -189,6 +194,7 @@ DEPENDENCIES
   simplecov
   spork (~> 0.9.0.rc)
   sqlite3
+  thin
   uglifier
   webmock
   will_paginate
