@@ -18,7 +18,7 @@ right: 0;
 display: block;
 width: 149px;
 height: 150px;
-background: url(/images/github-ribbon.png) no-repeat;
+background: url(/assets/github-ribbon.png) no-repeat;
 text-indent: -999px;
 overflow: hidden;
 z-index: 3;}
@@ -103,13 +103,13 @@ img.aligncenter  { margin-left:auto; margin-right:auto; display:block; }
 }
 .wrap-b {
   padding-bottom: 15px;
-  background: url(/images/wrap-bg-b.gif) 0 100% repeat-x;
+  background: url(/assets/wrap-bg-b.gif) 0 100% repeat-x;
   margin-bottom: 10px;
 
 }
 .wrap-t {
   padding-top: 15px;
-  background: url(/images/wrap-bg-t.gif) 0 0 repeat-x;
+  background: url(/assets/wrap-bg-t.gif) 0 0 repeat-x;
   margin-top: 10px;
 
 }
@@ -150,13 +150,13 @@ text-align: center;}
   width: 150px;
   height: 86px;
   float: left;
-  background: url(/images/logo.png) 0 0 no-repeat;
+  background: url(/assets/logo.png) 0 0 no-repeat;
   margin-top: 3px;
 }
 #header #tag-line {
   height: 75px;
   width: 420px;
-  background: url(/images/vertical-dot.gif) 0 0 repeat-y;
+  background: url(/assets/vertical-dot.gif) 0 0 repeat-y;
   margin-left: 35px;
   padding-left: 35px;
   float: left;
@@ -190,19 +190,19 @@ text-shadow: #999 1px 1px 1px;
   background-repeat: no-repeat;
 }
 #social li a#rss {
-  background-image: url(/images/rss-icon.png);
+  background-image: url(/assets/rss-icon.png);
 }
 #social li a#fb {
-  background-image: url(/images/fb-icon.png);
+  background-image: url(/assets/fb-icon.png);
 }
 #social li a#yt {
-  background-image: url(/images/yt-icon.png);
+  background-image: url(/assets/yt-icon.png);
 }
 #social li a#tw {
-  background-image: url(/images/tw-icon.png);
+  background-image: url(/assets/tw-icon.png);
 }
 #social li a#mail {
-  background-image: url(/images/mail-icon.png);
+  background-image: url(/assets/mail-icon.png);
 }
 #nav-wrap {
   clear: both;
@@ -220,7 +220,7 @@ text-shadow: #999 1px 1px 1px;
 #nav li {
   float: left;
   padding-right: 3px;
-  background: url(/images/nav-li-bg.gif) top right no-repeat;
+  background: url(/assets/nav-li-bg.gif) top right no-repeat;
 }
 #nav li.current_page_item {
   padding-left: 0;
@@ -251,7 +251,7 @@ text-shadow: #ccc 1px 1px 1px;
 #nav ul li {
   float: left;
   padding: 0;
-  background: url(/images/arrow.png) no-repeat 100% 0%;
+  background: url(/assets/arrow.png) no-repeat 100% 0%;
   margin-right: 15px;
 padding-right: 15px;
 }
@@ -287,14 +287,14 @@ li#menu-item-4 a, li#menu-item-2468 a {
   display: -moz-inline-stack;
   display: inline-block;
   padding-right: 18px;
-  background: url(/images/red-arrow.gif) 100% 50% no-repeat;
+  background: url(/assets/red-arrow.gif) 100% 50% no-repeat;
 text-shadow: #CCC 1px 1px 1px;
 }
 #become-wrap .box h2 strong {
   width: 20px;
   height: 21px;
   line-height: 21px;
-  background: url(/images/numbers-bg.gif) 0 0 no-repeat;
+  background: url(/assets/numbers-bg.gif) 0 0 no-repeat;
   color: #fff;
   font-size: 0.94em;
   display: -moz-inline-stack;
@@ -305,7 +305,7 @@ text-shadow: #CCC 1px 1px 1px;
 
 #become-wrap .box ul {
   padding-top: 11px;
-  background: url(/images/horizontal-dots.gif) 0 0 repeat-x;
+  background: url(/assets/horizontal-dots.gif) 0 0 repeat-x;
 }
 #become-wrap .box li {
   margin-bottom: 10px;
@@ -313,7 +313,7 @@ text-shadow: #CCC 1px 1px 1px;
 #become-wrap .box li a {
   padding-left: 21px;
   display: block;
-  background: url(/images/bullet-red-arrow.gif) 0 3px no-repeat;
+  background: url(/assets/bullet-red-arrow.gif) 0 3px no-repeat;
   color: #707070;
   font-size: 1.17em;
   font-weight: bold;
@@ -337,7 +337,7 @@ li.percentage strong {
 
 #footer {
   clear: both;
-  background: #ebebeb url(/images/footer-bg.gif) 0 100% repeat-x;
+  background: #ebebeb url(/assets/footer-bg.gif) 0 100% repeat-x;
   margin-top: 50px;
   padding: 20px 0 45px;
 }
@@ -352,7 +352,7 @@ li.percentage strong {
 #footer .wrap #logo-f a.like-btn {
   height: 40px;
   width: 100px;
-  background: url(/images/logo-f.png);
+  background: url(/assets/logo-f.png);
 }
 
 
@@ -394,7 +394,7 @@ li.percentage strong {
 
 ul h4 {
     margin-bottom: 5px;
-    background: url(/images/horizontal-dots.gif) 0 0 repeat-x;
+    background: url(/assets/horizontal-dots.gif) 0 0 repeat-x;
 }
 
 .bigger_box {
@@ -442,7 +442,7 @@ table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	padding: 4px;
 }
 table.tablesorter thead tr .header {
-	background-image: url(/images/bg.gif);
+	background-image: url(/assets/bg.gif);
 	background-repeat: no-repeat;
 	background-position: center right;
 	cursor: pointer;

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.12'
+gem 'rails', '3.2.3'
 gem 'delayed_job'
 gem 'jquery-rails'
 gem 'json'
@@ -13,6 +13,15 @@ gem 'meta_search'
 group :production do
   gem 'pg'
 end
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.2.5"
+  gem 'coffee-rails', "~> 3.2.2"
+  gem 'uglifier'
+end
+
 
 group :development do
   gem 'ZenTest'
