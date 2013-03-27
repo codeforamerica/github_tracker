@@ -3,7 +3,7 @@ Github tracker
 
 We want to track who's contributing to our organization and other rad organization projects on Github. Bam, Github Tracker.
 
-Does your project or organization use this projects?
+Does your project or organization use this project?
 ------------------------------------------
 Add it to the [apps](http://github.com/codeforamerica/github_tracker/wiki/apps) wiki!
 
